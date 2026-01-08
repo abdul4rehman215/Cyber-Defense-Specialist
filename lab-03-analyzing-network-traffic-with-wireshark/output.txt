@@ -1,0 +1,107 @@
+============================================================
+Lab 03: Analyzing Network Traffic with Wireshark
+Environment: Ubuntu Linux
+User: toor
+Host: ip-172-31-10-212
+============================================================
+
+========================
+SYSTEM PREPARATION
+========================
+
+$ sudo apt update
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Reading package lists... Done
+
+$ sudo apt install -y wireshark tshark curl wget dnsutils
+Setting up wireshark-common ...
+Setting up tshark ...
+Setting up wireshark ...
+Wireshark installed successfully.
+
+$ sudo usermod -a -G wireshark toor
+User added to wireshark group.
+
+$ newgrp wireshark
+
+$ getcap /usr/bin/dumpcap
+/usr/bin/dumpcap = cap_net_admin,cap_net_raw+eip
+
+========================
+INTERFACE VERIFICATION
+========================
+
+$ ip link show
+2: ens5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 state UP
+
+$ tshark -D
+1. ens5
+2. lo
+
+Primary capture interface identified: ens5
+
+========================
+DNS TRAFFIC GENERATION
+========================
+
+$ nslookup google.com
+Name: google.com
+Address: 142.250.182.46
+
+$ nslookup facebook.com
+Name: facebook.com
+Address: 157.240.229.35
+
+$ nslookup malicious-domain-example.com
+** server can't find malicious-domain-example.com: NXDOMAIN
+
+========================
+HTTP TRAFFIC GENERATION
+========================
+
+$ curl -v http://httpbin.org/get
+> GET /get HTTP/1.1
+< HTTP/1.1 200 OK
+
+$ curl -H "User-Agent: SuspiciousBot/1.0" http://httpbin.org/user-agent
+{
+  "user-agent": "SuspiciousBot/1.0"
+}
+
+========================
+HTTPS / TLS TRAFFIC
+========================
+
+$ curl -v https://www.google.com
+* TLSv1.3 handshake complete
+< HTTP/2 200
+
+$ curl -k https://self-signed.badssl.com/
+* SSL certificate problem: self signed certificate
+
+========================
+DNS ANALYSIS SCRIPT OUTPUT
+========================
+
+$ ./analyze_dns.sh
+
+=== DNS Traffic Analysis ===
+
+Top DNS Queries:
+5 google.com
+3 facebook.com
+1 malicious-domain-example.com
+1 suspicious.example.com
+
+Potential Suspicious Domains:
+malicious-domain-example.com
+suspicious.example.com
+
+Top-Level Domain Analysis:
+7 .com
+2 .org
+1 .example
+
+DNS Responses:
+google.com
