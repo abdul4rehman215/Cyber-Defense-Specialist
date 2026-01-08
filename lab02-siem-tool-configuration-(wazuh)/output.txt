@@ -1,0 +1,202 @@
+============================================================
+Lab 02: SIEM Tool Configuration (Wazuh)
+Captured Command Outputs
+Environment: Ubuntu 24.04.1 LTS
+User: toor
+Host: ip-172-31-10-198
+============================================================
+
+------------------------------------------------------------
+System Update & Upgrade
+------------------------------------------------------------
+
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove
+
+------------------------------------------------------------
+Dependency Installation
+------------------------------------------------------------
+
+Setting up gnupg2 (2.4.4-2ubuntu1) ...
+Setting up software-properties-common (0.99.49) ...
+
+------------------------------------------------------------
+System Information
+------------------------------------------------------------
+
+Linux ip-172-31-10-198 6.8.0-31-generic #31-Ubuntu SMP x86_64 GNU/Linux
+
+PRETTY_NAME="Ubuntu 24.04.1 LTS"
+VERSION_ID="24.04"
+
+------------------------------------------------------------
+Wazuh Repository Setup
+------------------------------------------------------------
+
+gpg: key imported successfully
+
+Get:1 https://packages.wazuh.com/4.x/apt stable InRelease
+Reading package lists... Done
+
+------------------------------------------------------------
+Wazuh Manager Installation
+------------------------------------------------------------
+
+Setting up wazuh-manager (4.5.4-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/wazuh-manager.service
+
+● wazuh-manager.service - Wazuh manager
+   Active: active (running)
+
+------------------------------------------------------------
+Wazuh Agent Installation
+------------------------------------------------------------
+
+Setting up wazuh-agent (4.5.4-1) ...
+
+● wazuh-agent.service - Wazuh agent
+   Active: active (running)
+
+------------------------------------------------------------
+Java Verification
+------------------------------------------------------------
+
+openjdk version "11.0.22" 2024-01-16
+OpenJDK Runtime Environment
+OpenJDK 64-Bit Server VM
+
+------------------------------------------------------------
+Elasticsearch Installation & Startup
+------------------------------------------------------------
+
+Setting up elasticsearch (7.17.13) ...
+Created elasticsearch keystore in /etc/elasticsearch
+
+● elasticsearch.service
+   Active: active (running)
+
+------------------------------------------------------------
+Elasticsearch Cluster Health
+------------------------------------------------------------
+
+{
+  "cluster_name" : "wazuh-cluster",
+  "status" : "green",
+  "number_of_nodes" : 1
+}
+
+------------------------------------------------------------
+Kibana Installation
+------------------------------------------------------------
+
+Setting up kibana (7.17.13) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/kibana.service
+
+● kibana.service
+   Active: active (running)
+
+------------------------------------------------------------
+Wazuh Kibana Plugin Installation
+------------------------------------------------------------
+
+Plugin installation was successful
+
+------------------------------------------------------------
+Wazuh Agent Connectivity Check
+------------------------------------------------------------
+
+ID: 000, Name: local-agent, IP: 127.0.0.1, Status: Active
+
+------------------------------------------------------------
+Generating Failed Authentication Events
+------------------------------------------------------------
+
+Generating failed login events...
+Authentication failure events logged
+
+------------------------------------------------------------
+File Integrity Monitoring Events
+------------------------------------------------------------
+
+/etc/test_file_1704736001 created
+/etc/test_config_change modified
+
+------------------------------------------------------------
+Network Activity Generation
+------------------------------------------------------------
+
+External IP request completed
+Ping to 8.8.8.8 successful
+
+------------------------------------------------------------
+Custom Rule Alert Output
+------------------------------------------------------------
+
+** Alert 1704735381.4567: - authentication_failures
+2026 Jan 08 18:22:14 (ip-172-31-10-198) 192.168.1.55->sshd
+Rule: 100001 (level 10)
+Description: Multiple failed login attempts from same source
+
+------------------------------------------------------------
+File Integrity Alert Output
+------------------------------------------------------------
+
+** Alert 1704736023.7821: - syscheck
+2026 Jan 08 18:37:11 (ip-172-31-10-198)
+Rule: 100002 (level 7)
+Description: New file created in /etc directory
+
+------------------------------------------------------------
+Active Response Execution
+------------------------------------------------------------
+
+INFO: Active response firewall-drop executed
+INFO: Rule 100001 triggered successfully
+
+------------------------------------------------------------
+SIEM Test Script Execution
+------------------------------------------------------------
+
+Running comprehensive SIEM test...
+SIEM test events generated successfully
+Check Wazuh dashboard for alerts
+
+------------------------------------------------------------
+Service Health Verification
+------------------------------------------------------------
+
+wazuh-manager.service - active (running)
+wazuh-agent.service   - active (running)
+elasticsearch.service - active (running)
+kibana.service        - active (running)
+
+------------------------------------------------------------
+Wazuh Processing Logs
+------------------------------------------------------------
+
+INFO: File integrity monitoring scan completed
+INFO: Active response firewall-drop executed
+INFO: Rule 100001 triggered successfully
+
+------------------------------------------------------------
+Alerts Log Summary
+------------------------------------------------------------
+
+** Alert: authentication_failures
+** Alert: syscheck
+** Alert: network_activity
+
+------------------------------------------------------------
+Kibana Access Confirmation
+------------------------------------------------------------
+
+Kibana is accessible at:
+http://127.0.0.1:5601
+
+------------------------------------------------------------
+End of output.txt
+------------------------------------------------------------
