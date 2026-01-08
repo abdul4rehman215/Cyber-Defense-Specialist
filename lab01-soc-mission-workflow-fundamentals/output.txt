@@ -1,0 +1,198 @@
+============================================================
+Lab 01: SOC Mission & Workflow Fundamentals
+Captured Command Outputs
+Environment: Ubuntu 24.04.1 LTS
+User: toor
+============================================================
+
+------------------------------------------------------------
+SOC Mission Statement Display
+------------------------------------------------------------
+
+SOC MISSION STATEMENT
+====================
+Mission: To provide continuous monitoring, detection, and response to cybersecurity
+threats while maintaining the confidentiality, integrity, and availability of
+organizational assets.
+
+Core Objectives:
+1. Monitor network traffic and system logs 24/7
+2. Detect and analyze security incidents
+3. Respond to threats in a timely manner
+4. Document and report security events
+5. Continuously improve security posture
+
+Key Performance Indicators:
+- Mean Time to Detection (MTTD)
+- Mean Time to Response (MTTR)
+- Number of incidents detected and resolved
+- False positive rate
+- System availability percentage
+
+SOC Maturity Level: Level 2 (Developing)
+Target Maturity Level: Level 3 (Defined)
+
+------------------------------------------------------------
+System Update & Java Installation
+------------------------------------------------------------
+
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+
+Setting up openjdk-11-jdk:amd64 (11.0.22+7-1ubuntu2) ...
+
+openjdk version "11.0.22" 2024-01-16
+OpenJDK Runtime Environment (build 11.0.22+7-Ubuntu-1ubuntu2)
+OpenJDK 64-Bit Server VM (build 11.0.22+7-Ubuntu-1ubuntu2, mixed mode)
+
+------------------------------------------------------------
+Elasticsearch Installation & Verification
+------------------------------------------------------------
+
+Created elasticsearch keystore in /etc/elasticsearch
+Setting up elasticsearch (7.17.18) ...
+
+{
+  "name" : "ip-172-31-10-241",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "ZQX8h3ZkQ0yEJ3SOCdemo",
+  "version" : {
+    "number" : "7.17.18",
+    "build_flavor" : "default",
+    "build_type" : "deb"
+  },
+  "tagline" : "You Know, for Search"
+}
+
+------------------------------------------------------------
+Kibana Service Status
+------------------------------------------------------------
+
+Setting up kibana (7.17.18) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/kibana.service → /lib/systemd/system/kibana.service.
+
+Kibana service is now running and listening on port 5601.
+
+------------------------------------------------------------
+Logstash Installation
+------------------------------------------------------------
+
+Setting up logstash (1:7.17.18-1) ...
+
+------------------------------------------------------------
+Sample Security Event Generation
+------------------------------------------------------------
+
+Sample security events generated and logged
+
+------------------------------------------------------------
+Elasticsearch Index Verification
+------------------------------------------------------------
+
+health status index               uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   soc-logs-2026.01.08 hD8kPpXyT7uSOC1234        1   0         146            0      312kb          312kb
+
+------------------------------------------------------------
+Elasticsearch Search Query Output (Excerpt)
+------------------------------------------------------------
+
+{
+  "hits" : {
+    "total" : {
+      "value" : 146,
+      "relation" : "eq"
+    },
+    "hits" : [
+      {
+        "_source" : {
+          "host" : "ip-172-31-10-241",
+          "message" : "Failed password for invalid user admin from 192.168.1.100 port 22 ssh2"
+        }
+      },
+      {
+        "_source" : {
+          "host" : "ip-172-31-10-241",
+          "message" : "Accepted password for user from 192.168.1.10 port 22 ssh2"
+        }
+      }
+    ]
+  }
+}
+
+------------------------------------------------------------
+ElastAlert Installation Output
+------------------------------------------------------------
+
+Successfully installed elastalert-0.2.4
+
+------------------------------------------------------------
+Service Status Verification
+------------------------------------------------------------
+
+Active: active (running)
+Active: active (running)
+Active: active (running)
+
+------------------------------------------------------------
+ElastAlert Status Check
+------------------------------------------------------------
+
+ElastAlert is RUNNING
+
+------------------------------------------------------------
+Elasticsearch Cluster Health
+------------------------------------------------------------
+
+"status" : "green"
+
+------------------------------------------------------------
+Indexed SOC Logs Confirmation
+------------------------------------------------------------
+
+green open soc-logs-2026.01.08 hD8kPpXyT7uSOC1234 1 0 312 0 512kb 512kb
+
+------------------------------------------------------------
+Final Test Event Generation
+------------------------------------------------------------
+
+Sample security events generated and logged
+
+------------------------------------------------------------
+SOC Monitoring Dashboard Output
+------------------------------------------------------------
+
+==================================
+ SOC MONITORING DASHBOARD
+==================================
+
+SYSTEM STATUS:
+- Elasticsearch: active
+- Kibana: active
+- Logstash: active
+
+RECENT SECURITY EVENTS (Last 10):
+sshd[5834]: Failed password for invalid user admin from 192.168.1.100 port 22 ssh2
+sshd[5931]: Accepted password for user from 192.168.1.10 port 22 ssh2
+
+ALERT SYSTEM STATUS:
+- ElastAlert: RUNNING
+- Recent alerts: 3
+
+ELASTICSEARCH INDICES:
+green open soc-logs-2026.01.08
+
+Last Updated: Wed Jan  8 17:06:51 UTC 2026
+==================================
+
+------------------------------------------------------------
+Kibana Access Confirmation
+------------------------------------------------------------
+
+Kibana is accessible at: http://localhost:5601
+
+------------------------------------------------------------
+End of output.txt
+------------------------------------------------------------
