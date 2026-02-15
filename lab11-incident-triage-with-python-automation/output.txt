@@ -1,0 +1,195 @@
+/home/toor/incident_triage_lab
+
+
+[
+    {
+        "alert_id": "ALT-001",
+        "timestamp": "2024-01-15T10:30:00Z",
+        "severity": "HIGH",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "8.8.8.8",
+        "alert_type": "Suspicious DNS Query",
+        "description": "Multiple DNS queries to suspicious domains",
+        "event_count": 15,
+        "user": "john.doe",
+        "asset": "WORKSTATION-01"
+    }
+    ...
+]
+
+
+{
+    "whitelist": {
+        "users": [
+            "vuln_scanner",
+            "backup_service"
+        ],
+        "source_ips": [
+            "192.168.1.200"
+        ],
+        "assets": [
+            "SCANNER-01",
+            "BACKUP-SERVER"
+        ]
+    },
+    "severity_weights": {
+        "CRITICAL": 10,
+        "HIGH": 7,
+        "MEDIUM": 4,
+        "LOW": 1
+    },
+    "alert_type_weights": {
+        "Malware Detection": 10,
+        "Data Exfiltration": 8,
+        "Suspicious DNS Query": 6,
+        "Failed Login Attempt": 5,
+        "Port Scan": 2
+    }
+}
+
+
+============================================================
+CORE TRIAGE EXECUTION
+============================================================
+
+
+=== Incident Triage Automation System ===
+Processing 5 alerts...
+Triage complete. Found 2 false positives
+
+=== Incident Triage Summary ===
+Total Alerts: 5
+False Positives: 2
+Legitimate Alerts: 3
+
+Priority Breakdown:
+CRITICAL: 1
+HIGH: 1
+MEDIUM: 1
+LOW: 0
+
+High Priority Alerts:
+- ALT-004 (Malware Detection) [CRITICAL]
+- ALT-001 (Suspicious DNS Query) [HIGH]
+
+Triage automation complete!
+
+
+============================================================
+ALERT ENRICHMENT TEST
+============================================================
+
+toor@ip-172-31-10-259:~/incident_triage_lab$ python3 scripts/alert_enrichment.py
+
+=== Alert Enrichment Test ===
+[
+    {
+        "alert_id": "ALT-001",
+        "source_ip_reputation": {
+            "is_malicious": false,
+            "threat_level": "INTERNAL",
+            "description": "Internal network IP"
+        }
+    },
+    {
+        "alert_id": "ALT-004",
+        "source_ip_reputation": {
+            "is_malicious": true,
+            "threat_level": "HIGH",
+            "description": "IP found in threat intelligence feed"
+        },
+        "threat_indicators": [
+            "Malicious Source IP"
+        ]
+    }
+]
+
+
+============================================================
+AUTOMATED RESPONSE EXECUTION
+============================================================
+
+
+=== Automated Response Test ===
+
+=== Security Alert Notification ===
+Alert ID: ALT-004
+Priority: CRITICAL
+Type: Malware Detection
+Asset: WORKSTATION-02
+Source IP: 203.0.113.10
+
+Actions: ['Isolate affected host', 'Notify SOC immediately', 'Create incident ticket']
+Ticket Created: TKT-8F3A1B2C
+--------------------------------------------------
+
+=== Security Alert Notification ===
+Alert ID: ALT-001
+Priority: HIGH
+Type: Suspicious DNS Query
+Asset: WORKSTATION-01
+Source IP: 192.168.1.100
+
+Actions: ['Notify security analyst', 'Create incident ticket', 'Collect forensic data']
+Ticket Created: TKT-7D91AC34
+--------------------------------------------------
+
+
+============================================================
+COMPLETE SOC WORKFLOW EXECUTION
+============================================================
+
+
+=== Complete Incident Triage Workflow ===
+
+Processing 5 alerts...
+Triage complete. Found 2 false positives
+
+=== Incident Triage Summary ===
+Total Alerts: 5
+False Positives: 2
+Legitimate Alerts: 3
+
+Priority Breakdown:
+CRITICAL: 1
+HIGH: 1
+MEDIUM: 1
+LOW: 0
+
+High Priority Alerts:
+- ALT-004 (Malware Detection) [CRITICAL]
+- ALT-001 (Suspicious DNS Query) [HIGH]
+
+=== Security Alert Notification ===
+Alert ID: ALT-004
+Priority: CRITICAL
+Type: Malware Detection
+Asset: WORKSTATION-02
+Source IP: 203.0.113.10
+
+Ticket Created: TKT-4ACD19F2
+--------------------------------------------------
+
+=== Security Alert Notification ===
+Alert ID: ALT-001
+Priority: HIGH
+Type: Suspicious DNS Query
+Asset: WORKSTATION-01
+Source IP: 192.168.1.100
+
+Ticket Created: TKT-9F7B22DA
+--------------------------------------------------
+
+Workflow completed successfully.
+
+
+============================================================
+GENERATED REPORT FILES
+============================================================
+
+
+processed_alerts.json
+false_positives.json
+high_priority_alerts.json
+triage_summary.txt
+response_log.json
