@@ -1,0 +1,30 @@
+wazuh:
+  url: "https://localhost:55000"
+  username: "wazuh"
+  password: "wazuh"
+  poll_interval: 60
+  min_alert_level: 7
+
+thehive:
+  url: "http://localhost:9000"
+  username: "admin@thehive.local"
+  password: "admin123"
+
+cortex:
+  url: "http://localhost:9001"
+  api_key: ""
+
+playbooks:
+  malware_detection:
+    enabled: true
+    rule_ids: [510, 511, 512, 553, 554]
+    severity: 3
+
+  brute_force:
+    enabled: true
+    rule_ids: [5710, 5712, 5720]
+    severity: 2
+
+logging:
+  level: "INFO"
+  file: "logs/soar_integration.log"
