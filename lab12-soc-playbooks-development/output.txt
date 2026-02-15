@@ -1,0 +1,89 @@
+==============================
+Lab 12 – SOC Playbooks Development
+Execution Outputs
+==============================
+
+
+============================================================
+▶ Run Malware Detection Playbook
+============================================================
+
+toor@ip-172-31-10-284:~/soc_playbooks$ python3 scripts/malware_detection.py
+
+2025-08-18 16:02:11 - INFO - {"timestamp": "2025-08-18T16:02:11.118291", "incident_id": "INC-20250818-160211", "action": "Playbook Start", "status": "STARTED", "details": ""}
+2025-08-18 16:02:11 - INFO - {"timestamp": "2025-08-18T16:02:11.441920", "incident_id": "INC-20250818-160211", "action": "Scan Processes", "status": "SUCCESS", "details": "Found 1 suspicious processes"}
+2025-08-18 16:02:12 - INFO - {"timestamp": "2025-08-18T16:02:12.003183", "incident_id": "INC-20250818-160211", "action": "Scan Files", "status": "SUCCESS", "details": "Found 2 suspicious files"}
+2025-08-18 16:02:12 - INFO - {"timestamp": "2025-08-18T16:02:12.119881", "incident_id": "INC-20250818-160211", "action": "Send Alert", "status": "SUCCESS", "details": "Malware activity detected!"}
+2025-08-18 16:02:13 - INFO - {"timestamp": "2025-08-18T16:02:13.338192", "incident_id": "INC-20250818-160211", "action": "Quarantine File", "status": "SUCCESS", "details": "/tmp/malicious.sh -> logs/incidents/quarantine_INC-20250818-160211/malicious.sh | Hash: 3f2a8b1c8e27a31b7d92a3e8a1a9e59d8f1b0c67a09b3ef62e9f1c56b1a3345c"}
+2025-08-18 16:02:14 - INFO - {"timestamp": "2025-08-18T16:02:14.007311", "incident_id": "INC-20250818-160211", "action": "Terminate Process", "status": "SUCCESS", "details": "PID 3482"}
+2025-08-18 16:02:14 - INFO - {"timestamp": "2025-08-18T16:02:14.332914", "incident_id": "INC-20250818-160211", "action": "Generate Report", "status": "SUCCESS", "details": "logs/reports/malware_detection_INC-20250818-160211.json"}
+2025-08-18 16:02:14 - INFO - {"timestamp": "2025-08-18T16:02:14.333281", "incident_id": "INC-20250818-160211", "action": "Playbook Complete", "status": "SUCCESS", "details": ""}
+
+
+
+============================================================
+▶ Run Network Intrusion Playbook
+============================================================
+
+toor@ip-172-31-10-284:~/soc_playbooks$ python3 scripts/network_intrusion.py
+
+2025-08-18 16:05:33 - INFO - {"timestamp": "2025-08-18T16:05:33.019231", "incident_id": "INC-20250818-160533", "action": "Playbook Start", "status": "STARTED", "details": ""}
+2025-08-18 16:05:33 - INFO - {"timestamp": "2025-08-18T16:05:33.441029", "incident_id": "INC-20250818-160533", "action": "List Listening Ports", "status": "SUCCESS", "details": ""}
+2025-08-18 16:05:34 - INFO - {"timestamp": "2025-08-18T16:05:34.118832", "incident_id": "INC-20250818-160533", "action": "Analyze Connections", "status": "SUCCESS", "details": "Suspicious IPs: 1, Ports: 1"}
+2025-08-18 16:05:35 - INFO - {"timestamp": "2025-08-18T16:05:35.019182", "incident_id": "INC-20250818-160533", "action": "Send Alert", "status": "SUCCESS", "details": "Network intrusion detected!"}
+2025-08-18 16:05:35 - INFO - {"timestamp": "2025-08-18T16:05:35.338812", "incident_id": "INC-20250818-160533", "action": "Block IP 203.0.113.45", "status": "SUCCESS", "details": ""}
+2025-08-18 16:05:36 - INFO - {"timestamp": "2025-08-18T16:05:36.008219", "incident_id": "INC-20250818-160533", "action": "Kill Process on Port 4444", "status": "SUCCESS", "details": ""}
+2025-08-18 16:05:36 - INFO - {"timestamp": "2025-08-18T16:05:36.448129", "incident_id": "INC-20250818-160533", "action": "Generate Network Report", "status": "SUCCESS", "details": "logs/reports/network_report_INC-20250818-160533.json"}
+2025-08-18 16:05:36 - INFO - {"timestamp": "2025-08-18T16:05:36.448812", "incident_id": "INC-20250818-160533", "action": "Playbook Complete", "status": "SUCCESS", "details": ""}
+
+
+
+============================================================
+▶ Run System Isolation Playbook (Test Environment Only)
+============================================================
+
+toor@ip-172-31-10-284:~/soc_playbooks$ python3 scripts/system_isolation.py
+
+2025-08-18 16:09:10 - INFO - {"timestamp": "2025-08-18T16:09:10.102812", "incident_id": "INC-20250818-160910", "action": "Playbook Start", "status": "STARTED", "details": ""}
+2025-08-18 16:09:10 - INFO - {"timestamp": "2025-08-18T16:09:10.441182", "incident_id": "INC-20250818-160910", "action": "Send Alert", "status": "SUCCESS", "details": "CRITICAL INCIDENT - System Isolation Initiated"}
+2025-08-18 16:09:11 - INFO - {"timestamp": "2025-08-18T16:09:11.118223", "incident_id": "INC-20250818-160910", "action": "Collect processes.txt", "status": "SUCCESS", "details": ""}
+2025-08-18 16:09:12 - INFO - {"timestamp": "2025-08-18T16:09:12.229138", "incident_id": "INC-20250818-160910", "action": "Collect network.txt", "status": "SUCCESS", "details": ""}
+2025-08-18 16:09:13 - INFO - {"timestamp": "2025-08-18T16:09:13.338912", "incident_id": "INC-20250818-160910", "action": "Network Isolation", "status": "SUCCESS", "details": ""}
+2025-08-18 16:09:14 - INFO - {"timestamp": "2025-08-18T16:09:14.447221", "incident_id": "INC-20250818-160910", "action": "Disable Services", "status": "SUCCESS", "details": ""}
+2025-08-18 16:09:15 - INFO - {"timestamp": "2025-08-18T16:09:15.559912", "incident_id": "INC-20250818-160910", "action": "Create Evidence Archive", "status": "SUCCESS", "details": "logs/incidents/evidence_INC-20250818-160910.zip"}
+2025-08-18 16:09:15 - INFO - {"timestamp": "2025-08-18T16:09:15.660021", "incident_id": "INC-20250818-160910", "action": "Generate Report", "status": "SUCCESS", "details": "logs/reports/system_isolation_INC-20250818-160910.json"}
+2025-08-18 16:09:15 - INFO - {"timestamp": "2025-08-18T16:09:15.660812", "incident_id": "INC-20250818-160910", "action": "Playbook Complete", "status": "SUCCESS", "details": ""}
+
+
+
+============================================================
+▶ Verify Generated Artifacts
+============================================================
+
+toor@ip-172-31-10-284:~/soc_playbooks$ ls -R logs/
+
+logs/
+├── alerts
+│   └── alerts.log
+├── incidents
+│   ├── malware_detection_INC-20250818-160211.log
+│   ├── quarantine_INC-20250818-160211/
+│   │   └── malicious.sh
+│   ├── evidence_INC-20250818-160910/
+│   │   ├── processes.txt
+│   │   ├── network.txt
+│   │   ├── logins.txt
+│   │   ├── env.txt
+│   │   ├── meminfo
+│   │   ├── cpuinfo
+│   │   └── auth.log
+│   └── evidence_INC-20250818-160910.zip
+└── reports
+    ├── malware_detection_INC-20250818-160211.json
+    ├── network_report_INC-20250818-160533.json
+    └── system_isolation_INC-20250818-160910.json
+
+
+==============================
+End of Lab 12 Execution Output
+==============================
