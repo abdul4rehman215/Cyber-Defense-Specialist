@@ -1,0 +1,134 @@
+Requirement already satisfied: pip
+Successfully installed pip-25.0.1
+
+Collecting dnspython
+Collecting email-validator
+Successfully installed dnspython-2.6.1 email-validator-2.1.1
+
+total 12K
+-rw-rw-r-- 1 toor toor  452 legitimate.eml
+-rw-rw-r-- 1 toor toor  489 phishing.eml
+-rw-rw-r-- 1 toor toor  472 malware.eml
+
+
+============================================================
+ANALYZING: samples/legitimate.eml
+============================================================
+Threat Score: 0
+Threat Level: MINIMAL
+Spoofing Indicators: []
+Content Indicators: []
+Routing Analysis: {'hops': 1, 'servers': ['mail.company.com'], 'suspicious_ips': []}
+
+============================================================
+ANALYZING: samples/phishing.eml
+============================================================
+Threat Score: 11
+Threat Level: HIGH
+Spoofing Indicators: ['From and Reply-To mismatch']
+Content Indicators: ['Suspicious subject keyword: urgent', 'Suspicious subject keyword: verify']
+Routing Analysis: {'hops': 1, 'servers': ['suspicious.example.com'], 'suspicious_ips': ['203.0.113.50']}
+
+============================================================
+ANALYZING: samples/malware.eml
+============================================================
+Threat Score: 10
+Threat Level: HIGH
+Spoofing Indicators: ['From and Return-Path domain mismatch']
+Content Indicators: ['Executable attachment detected']
+Routing Analysis: {'hops': 1, 'servers': ['compromised.host.org'], 'suspicious_ips': ['198.51.100.25']}
+
+
+Validating SPF: company.com from 192.0.2.10
+DNS Error: The DNS response does not contain an answer.
+No SPF record found.
+Result: None
+
+Validating SPF: company.com from 203.0.113.50
+DNS Error: The DNS response does not contain an answer.
+No SPF record found.
+Result: None
+
+Sample SPF: v=spf1 ip4:192.0.2.0/24 ip4:198.51.100.10 include:_spf.google.com mx -all
+
+
+Validating DKIM: samples/legitimate.eml
+DNS Error: The DNS response does not contain an answer.
+Public key not found.
+DKIM Valid: False
+
+Validating DKIM: samples/phishing.eml
+No DKIM signature found.
+DKIM Valid: False
+
+Sample DKIM Record:
+default._domainkey.mycompany.com IN TXT "v=DKIM1; k=rsa; p=PUBLICKEYDATA"
+
+
+Validating DMARC: company.com
+SPF: Pass, DKIM: True
+DNS Error: The DNS response does not contain an answer.
+No DMARC record found.
+DMARC Result: None
+
+Validating DMARC: company.com
+SPF: Fail, DKIM: False
+DNS Error: The DNS response does not contain an answer.
+No DMARC record found.
+DMARC Result: None
+
+Validating DMARC: company.com
+SPF: Pass, DKIM: False
+DNS Error: The DNS response does not contain an answer.
+No DMARC record found.
+DMARC Result: None
+
+Sample DMARC Record:
+_dmarc.mycompany.com IN TXT "v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@mycompany.com"
+
+============================================================
+EMAIL THREAT REPORT: samples/legitimate.eml
+============================================================
+Threat Score : 6
+Threat Level : LOW
+SPF Result   : None
+DKIM Result  : False
+DMARC Result : None
+Recommendations:
+ - Verify SPF configuration for sender domain.
+ - DKIM signature validation failed or missing.
+============================================================
+
+============================================================
+EMAIL THREAT REPORT: samples/phishing.eml
+============================================================
+Threat Score : 18
+Threat Level : HIGH
+SPF Result   : None
+DKIM Result  : False
+DMARC Result : None
+Recommendations:
+ - Verify SPF configuration for sender domain.
+ - DKIM signature validation failed or missing.
+ - Block email and investigate sender immediately.
+============================================================
+
+============================================================
+EMAIL THREAT REPORT: samples/malware.eml
+============================================================
+Threat Score : 19
+Threat Level : HIGH
+SPF Result   : None
+DKIM Result  : False
+DMARC Result : None
+Recommendations:
+ - Verify SPF configuration for sender domain.
+ - DKIM signature validation failed or missing.
+ - Block email and investigate sender immediately.
+============================================================
+
+total 12K
+-rw-rw-r-- 1 toor toor 1.6K legitimate.eml.json
+-rw-rw-r-- 1 toor toor 1.8K phishing.eml.json
+-rw-rw-r-- 1 toor toor 1.8K malware.eml.json
+
