@@ -2,6 +2,25 @@
 
 ---
 
+## 🎯 Objectives
+
+✔ Automate security alert triage  
+✔ Implement whitelist-based false positive filtering  
+✔ Apply rule-based priority scoring  
+✔ Enrich alerts with threat intelligence  
+✔ Automate response actions & ticket creation  
+✔ Build complete SOC-style workflow  
+
+---
+## 📌 Prerequisites
+
+- Basic Python programming
+- Understanding of security alerts and severity levels
+- Familiarity with JSON
+- Linux command line basics
+
+---
+
 ## 🔹 Lab Environment
 
 | Component | Details |
@@ -11,17 +30,6 @@
 | Interface | ens5 |
 | Working Directory | /home/toor/incident_triage_lab |
 | Python Version | 3.12.x |
-
----
-
-## 🎯 Objectives
-
-✔ Automate security alert triage  
-✔ Implement whitelist-based false positive filtering  
-✔ Apply rule-based priority scoring  
-✔ Enrich alerts with threat intelligence  
-✔ Automate response actions & ticket creation  
-✔ Build complete SOC-style workflow  
 
 ---
 
