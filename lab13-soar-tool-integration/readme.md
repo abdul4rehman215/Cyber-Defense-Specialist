@@ -160,13 +160,18 @@ To ensure the integration works correctly before production deployment.
 
 ```
 soar-integration/
-├── connectors/
-├── playbooks/
-├── workflows/
-├── logs/
-├── tests/
+├──commands.sh
+├──output.txt
+├──interviewqna.md
+├──troubleshooting.md
+├──scripts/
+├── test
 ├── config.yaml
 └── main.py
+   ├── connectors/
+   ├── playbooks/
+   ├── workflows/
+   ├── logs/
 ```
 
 ---
