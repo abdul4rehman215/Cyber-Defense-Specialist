@@ -1,0 +1,158 @@
+========================================
+SYSTEM UPDATE
+========================================
+
+toor@ip-172-31-12-155:~$ sudo apt update && sudo apt upgrade -y
+
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove
+
+
+========================================
+DOCKER INSTALLATION
+========================================
+
+toor@ip-172-31-12-155:~$ docker --version
+Docker version 26.1.3, build 9e34c9b
+
+toor@ip-172-31-12-155:~$ docker compose version
+Docker Compose version v2.27.0
+
+toor@ip-172-31-12-155:~$ sudo systemctl status docker
+Active: active (running)
+
+
+========================================
+WAZUH DEPLOYMENT
+========================================
+
+toor@ip-172-31-12-155:~/wazuh-soar-lab$ docker compose up -d
+
+Creating wazuh-manager   ... done
+Creating wazuh-indexer   ... done
+Creating wazuh-dashboard ... done
+
+toor@ip-172-31-12-155:~/wazuh-soar-lab$ docker compose ps
+
+NAME               STATUS
+wazuh-manager      Up
+wazuh-indexer      Up
+wazuh-dashboard    Up
+
+Wazuh Dashboard accessible at:
+https://localhost
+
+Login successful.
+
+
+========================================
+THEHIVE DEPLOYMENT
+========================================
+
+toor@ip-172-31-12-155:~/thehive-soar$ docker compose up -d
+
+Creating elasticsearch ... done
+Creating thehive       ... done
+
+toor@ip-172-31-12-155:~/thehive-soar$ docker compose ps
+
+NAME            STATUS
+elasticsearch   Up
+thehive         Up
+
+TheHive accessible at:
+http://localhost:9000
+
+Admin login successful.
+
+
+========================================
+CORTEX DEPLOYMENT
+========================================
+
+toor@ip-172-31-12-155:~/cortex-soar$ docker compose up -d
+
+Creating elasticsearch ... done
+Creating cortex        ... done
+
+toor@ip-172-31-12-155:~/cortex-soar$ docker compose ps
+
+NAME            STATUS
+elasticsearch   Up
+cortex          Up
+
+Cortex accessible at:
+http://localhost:9001
+
+
+========================================
+PYTHON DEPENDENCIES
+========================================
+
+pip3 install requests urllib3 pyyaml
+
+Successfully installed requests-2.32.3
+Successfully installed urllib3-2.2.1
+Successfully installed pyyaml-6.0.1
+
+
+========================================
+INTEGRATION TESTS
+========================================
+
+toor@ip-172-31-12-155:~/soar-integration$ python3 -m unittest tests/test_integration.py
+
+..
+----------------------------------------------------------------------
+Ran 2 tests in 1.482s
+
+OK
+
+Wazuh authentication successful.
+TheHive login successful.
+
+
+========================================
+SOAR PLATFORM EXECUTION
+========================================
+
+toor@ip-172-31-12-155:~/soar-integration$ python3 main.py
+
+2026-02-15 19:22:14 - INFO - Starting SOAR Integration Platform
+2026-02-15 19:22:14 - INFO - Workflow Orchestrator initialized
+2026-02-15 19:22:15 - INFO - Starting alert processing loop
+2026-02-15 19:22:16 - INFO - Created case ~1234 for alert
+2026-02-15 19:22:17 - INFO - Executed malware_detection playbook
+2026-02-15 19:22:17 - INFO - Case created in TheHive
+2026-02-15 19:22:17 - INFO - Observable IP added
+
+
+========================================
+LOG MONITORING
+========================================
+
+toor@ip-172-31-12-155:~/soar-integration$ tail -f logs/soar_integration.log
+
+INFO - Executed malware_detection playbook
+INFO - Case created in TheHive
+INFO - Observable IP added
+
+
+========================================
+FINAL VALIDATION
+========================================
+
+✔ Alert pulled from Wazuh
+✔ Playbook executed automatically
+✔ Case created in TheHive
+✔ Observable added automatically
+✔ Logging operational
+✔ Full SOAR workflow validated
+
+ls logs/
+
+soar_integration.log
