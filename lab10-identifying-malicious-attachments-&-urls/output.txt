@@ -1,0 +1,147 @@
+[SCANNING] script.sh
+--------------------------------------------------
+Size: 33 bytes
+MIME: text/x-shellscript
+MD5: 5a2ef38d8a28f5b09df9e132e7c6e34f
+SHA256: 43a92fbb64dfbd8129a64b26a8a32c0f8e9bb9b67a6c379faeaccc6dc7f02e43
+Risk Score: 10
+Threat Level: LOW
+Warnings: ['Unusually small file size']
+
+Report saved: reports/attachment_report_20250818_143012.json
+
+
+[SCANNING] document.txt
+--------------------------------------------------
+Size: 29 bytes
+MIME: text/plain
+MD5: 3df7c2b98b66fba0f8d3e95f5c8d7c28
+SHA256: 6dbb5c6d94f6a8f55e3a68b12f1bb36e1d7f0e7e2e6bb7f6a3b8a7a1f1e0c1d2
+Risk Score: 10
+Threat Level: LOW
+Warnings: ['Unusually small file size']
+
+[SCANNING] script.sh
+--------------------------------------------------
+Size: 33 bytes
+MIME: text/x-shellscript
+MD5: 5a2ef38d8a28f5b09df9e132e7c6e34f
+SHA256: 43a92fbb64dfbd8129a64b26a8a32c0f8e9bb9b67a6c379faeaccc6dc7f02e43
+Risk Score: 10
+Threat Level: LOW
+Warnings: ['Unusually small file size']
+
+[SCANNING] invoice.pdf.exe
+--------------------------------------------------
+Size: 13 bytes
+MIME: text/plain
+MD5: 7b8c9a6d5e4f3b2c1d0e9f8a7b6c5d4e
+SHA256: 8e7d6c5b4a392817161514131211100f0e0d0c0b0a09080706050403020100ff
+Risk Score: 80
+Threat Level: HIGH
+Warnings: ['Suspicious file extension', 'Double extension detected', 'Unusually small file size']
+
+[SCANNING] report.docx
+--------------------------------------------------
+Size: 29 bytes
+MIME: text/plain
+MD5: 2e7d9c5a4b3f8d6c1a0b9e8d7f6c5b4a
+SHA256: 1f2e3d4c5b6a79880706050403020100ffeeddccbbaa99887766554433221100
+Risk Score: 10
+Threat Level: LOW
+Warnings: ['Unusually small file size']
+
+Report saved: reports/attachment_report_20250818_143245.json
+
+
+[ANALYZING] https://www.google.com
+------------------------------------------------------------
+Risk Score: 0
+Threat Level: CLEAN
+Warnings: []
+
+Report saved: reports/url_report_20250818_144010.json
+
+
+[ANALYZING] https://www.google.com
+------------------------------------------------------------
+Risk Score: 0
+Threat Level: CLEAN
+Warnings: []
+
+[ANALYZING] https://github.com
+------------------------------------------------------------
+Risk Score: 0
+Threat Level: CLEAN
+Warnings: []
+
+[ANALYZING] http://192.168.1.1/admin
+------------------------------------------------------------
+Risk Score: 25
+Threat Level: MEDIUM
+Warnings: ['IP address used instead of domain']
+
+[ANALYZING] https://bit.ly/shortened
+------------------------------------------------------------
+Risk Score: 20
+Threat Level: LOW
+Warnings: ['URL shortener detected']
+
+[ANALYZING] https://secure-bank-verify.suspicious.com
+------------------------------------------------------------
+Risk Score: 10
+Threat Level: LOW
+Warnings: ['Keyword detected: verify']
+
+[ANALYZING] https://www.microsoft.com
+------------------------------------------------------------
+Risk Score: 0
+Threat Level: CLEAN
+Warnings: []
+
+Report saved: reports/url_report_20250818_144332.json
+
+
+============================================================
+INTEGRATED EMAIL SECURITY SCAN
+============================================================
+
+Found URLs: ['https://secure-verify-account.suspicious-site.com/login']
+
+[ANALYZING] https://secure-verify-account.suspicious-site.com/login
+------------------------------------------------------------
+Risk Score: 15
+Threat Level: LOW
+Warnings: ['Keyword detected: verify', 'Keyword detected: account']
+
+Report saved: reports/url_report_20250818_145045.json
+
+[SCANNING] document.txt
+--------------------------------------------------
+Risk Score: 10
+Threat Level: LOW
+
+[SCANNING] script.sh
+--------------------------------------------------
+Risk Score: 10
+Threat Level: LOW
+
+[SCANNING] invoice.pdf.exe
+--------------------------------------------------
+Risk Score: 80
+Threat Level: HIGH
+
+[SCANNING] report.docx
+--------------------------------------------------
+Risk Score: 10
+Threat Level: LOW
+
+Report saved: reports/attachment_report_20250818_145058.json
+
+Overall Email Risk: HIGH
+Integrated report saved: reports/integrated_report_20250818_145102.json
+
+
+attachment_report_20250818_143245.json
+url_report_20250818_144332.json
+integrated_report_20250818_145102.json
