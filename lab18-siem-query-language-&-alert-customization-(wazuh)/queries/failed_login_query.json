@@ -1,0 +1,20 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "rule.groups": "authentication_failed"
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "now-1h"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
