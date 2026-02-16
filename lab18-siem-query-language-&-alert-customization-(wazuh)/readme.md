@@ -4,16 +4,18 @@
 
 ## 📌 Lab Summary
 
-This lab focuses on writing and validating custom Wazuh (Elasticsearch DSL) queries, creating custom detection rules, automating alert handling, optimizing query performance, and validating the entire SIEM workflow.
+This lab focuses on mastering Wazuh (Elasticsearch DSL-based) query language and implementing full SIEM customization.  
 
-The lab demonstrates:
+You designed, validated, optimized, and automated detection logic using:
 
-- Custom query creation
-- Advanced threat detection logic
-- Custom Wazuh rule development
-- Alert monitoring & automation
-- Performance benchmarking
-- Validation and testing framework
+- Custom Elasticsearch queries
+- Custom Wazuh XML rules
+- Alert monitoring scripts
+- Automated response handlers
+- Performance benchmarking tools
+- Validation & testing framework
+
+This lab models real-world SOC-level SIEM engineering tasks.
 
 ---
 
@@ -26,7 +28,7 @@ The lab demonstrates:
 - Automate alert processing and response
 - Optimize Elasticsearch queries
 - Benchmark query performance
-- Validate complete SIEM customization
+- Validate complete SIEM customization workflow
 
 ---
 
@@ -35,21 +37,21 @@ The lab demonstrates:
 - Basic Linux command-line knowledge
 - Understanding of log analysis concepts
 - Familiarity with JSON structure
-- Knowledge of basic security threats
+- Knowledge of authentication & network security threats
 - Wazuh installed and accessible
 
 ---
 
 ## 🖥 Environment
 
-- Ubuntu 20.04 LTS
-- Wazuh Manager
-- Wazuh Indexer (Elasticsearch)
-- Wazuh Dashboard
-- jq
-- bc
-- User: toor
-- Host: ip-172-31-10-214
+- Ubuntu 20.04 LTS  
+- Wazuh Manager  
+- Wazuh Indexer (Elasticsearch)  
+- Wazuh Dashboard  
+- jq  
+- bc  
+- User: toor  
+- Host: ip-172-31-10-214  
 
 ---
 
@@ -91,37 +93,111 @@ lab18-siem-customization/
 
 ## ▶ Execution Flow
 
-1. Start Wazuh services
-2. Create & test custom queries
-3. Validate queries
-4. Create custom rules
-5. Restart Wazuh Manager
-6. Generate test events
-7. Monitor & process alerts
-8. Benchmark performance
-9. Run validation scripts
+1. Start Wazuh services  
+2. Create & test custom queries  
+3. Validate query syntax and execution  
+4. Create and load custom Wazuh rules  
+5. Restart Wazuh Manager  
+6. Generate simulated attack events  
+7. Monitor and process custom alerts  
+8. Benchmark and optimize query performance  
+9. Validate full lab setup  
 
 ---
 
 ## ✅ Expected Outcomes
 
-- Custom queries execute successfully
-- Custom rules load without errors
-- Custom alerts triggered
-- Automated response executed
-- Performance improvement measured (~43%)
-- Full lab validation successful
+- Custom queries execute successfully  
+- Custom rules load without syntax errors  
+- Custom alerts are triggered correctly  
+- Automated response scripts execute actions  
+- Query optimization improves performance (~43%)  
+- Validation suite confirms full configuration  
 
 ---
 
-## 🏁 Result
+# 🏁 Final Conclusion
 
-This lab successfully demonstrated:
+You have successfully:
 
-- Advanced Wazuh query writing
-- SIEM rule customization
-- Alert automation scripting
-- Performance optimization techniques
-- Complete validation workflow
+✔ Mastered Wazuh Query Language  
+✔ Created custom authentication rules  
+✔ Created syscheck rules  
+✔ Created firewall/network rules  
+✔ Implemented alert automation  
+✔ Built custom response handlers  
+✔ Simulated attack scenarios  
+✔ Validated rule loading  
+✔ Optimized query performance  
+✔ Compared execution benchmarks  
+✔ Created a lab validation suite  
 
-Real SOC-level SIEM engineering skills implemented.
+This lab demonstrates complete SIEM customization from detection logic to automated response.
+
+---
+
+# 📚 What I Learned
+
+- How Elasticsearch DSL queries work in Wazuh
+- How to build detection logic using filters, ranges, and aggregations
+- How to reduce false positives using precise rule conditions
+- How to create and load custom Wazuh XML rules
+- How to automate alert monitoring and response scripting
+- How to benchmark and optimize query performance
+- How to validate a full SIEM workflow in a controlled environment
+
+---
+
+# 🚨 Why This Matters
+
+SIEM customization is critical in real cybersecurity environments.
+
+Default SIEM rules often:
+
+- Miss organization-specific threats
+- Generate excessive false positives
+- Cannot automate response actions
+- Lack performance optimization
+
+By mastering custom query creation and alert automation, you can:
+
+- Detect threats specific to your environment  
+- Reduce false positive alerts  
+- Automate incident response workflows  
+- Improve detection speed  
+- Optimize monitoring performance  
+
+---
+
+# 🌍 Real-World Applications
+
+The skills developed in this lab apply directly to:
+
+- SOC (Security Operations Center) Analyst roles  
+- SIEM Administrator positions  
+- Incident Response teams  
+- Threat Hunting operations  
+- Compliance monitoring and reporting  
+
+---
+
+# 🚀 Real-World Impact
+
+This lab demonstrates practical SOC-level SIEM engineering:
+
+- Fine-tuned detection queries  
+- Custom threat detection logic  
+- Reduced alert fatigue  
+- Automated response workflows  
+- Performance tuning  
+- Validation & testing framework  
+
+These are real-world SIEM engineering and SOC automation skills used in enterprise security environments.
+
+---
+
+## 🏆 Result
+
+Advanced Wazuh SIEM customization successfully implemented and validated.
+
+Enterprise-grade detection and automation techniques demonstrated.
