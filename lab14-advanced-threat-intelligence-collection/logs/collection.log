@@ -1,0 +1,3 @@
+2026-02-16 15:02:11,113 - INFO - Starting threat collection process
+2026-02-16 15:02:11,129 - INFO - Collected data saved to data/collected_20260216_150211.json
+2026-02-16 15:02:11,129 - INFO - Collection completed: {'total_indicators': 7, 'output_file': 'data/collected_20260216_150211.json'}
