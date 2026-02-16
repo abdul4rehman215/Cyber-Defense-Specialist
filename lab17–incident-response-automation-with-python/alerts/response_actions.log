@@ -1,0 +1,4 @@
+{"timestamp": "2026-02-16T19:12:03.112391", "action": "block_ip", "details": "unknown"}
+{"timestamp": "2026-02-16T19:12:03.112999", "action": "send_alert", "details": "privilege_escalation"}
+{"timestamp": "2026-02-16T19:12:03.114002", "action": "create_ticket", "details": "INC-20260216191203-PRIVILEGE_ESCALATION"}
+{"timestamp": "2026-02-16T19:12:03.115331", "action": "backup_logs", "details": "/home/toor/incident_resp
