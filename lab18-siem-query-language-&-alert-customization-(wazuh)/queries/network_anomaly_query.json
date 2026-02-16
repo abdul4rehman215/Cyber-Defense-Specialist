@@ -1,0 +1,35 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "rule.level": {
+              "gte": 7
+            }
+          }
+        },
+        {
+          "match": {
+            "rule.groups": "firewall"
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "now-30m"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "top_blocked_ips": {
+      "terms": {
+        "field": "data.srcip.keyword",
+        "size": 5
+      }
+    }
+  }
+}
