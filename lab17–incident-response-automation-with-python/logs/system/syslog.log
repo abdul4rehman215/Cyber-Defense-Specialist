@@ -1,0 +1,5 @@
+2024-01-15 10:30:15 server01 sshd[5678]: Failed password for root from 192.168.1.100 port 22
+2024-01-15 10:31:20 server01 sshd[5679]: Failed password for admin from 192.168.1.100 port 22
+2024-01-15 10:32:25 server01 sshd[5680]: Failed password for root from 192.168.1.100 port 22
+2024-01-15 10:33:30 server01 kernel: CPU usage spike detected: 95% utilization
+2024-01-15 10:34:35 server01 firewall: BLOCKED connection from 10.0.0.50 to port 443
