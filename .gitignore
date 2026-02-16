@@ -1,0 +1,106 @@
+# ===============================
+# Python
+# ===============================
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.egg-info/
+dist/
+build/
+
+# ===============================
+# Virtual Environments
+# ===============================
+
+venv/
+env/
+.venv/
+ENV/
+
+# ===============================
+# Logs & Generated Output
+# ===============================
+
+logs/
+*.log
+*.out
+*.err
+
+# Zeek logs
+*.state
+*.idx
+
+# Wazuh alerts
+alerts.json
+
+# ===============================
+# PCAP & Traffic Captures
+# ===============================
+
+*.pcap
+*.cap
+pcaps/
+
+# ===============================
+# Reports & Generated Files
+# ===============================
+
+reports/
+*.html
+*.json
+*.csv
+
+# ===============================
+# Evidence & Archives
+# ===============================
+
+evidence/
+artifacts/
+*.zip
+*.tar
+*.tar.gz
+*.gz
+
+# ===============================
+# Docker
+# ===============================
+
+*.env
+.env
+docker-compose.override.yml
+*.tar
+
+# ===============================
+# OS Files
+# ===============================
+
+.DS_Store
+Thumbs.db
+
+# ===============================
+# IDE / Editor
+# ===============================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===============================
+# Testing & Coverage
+# ===============================
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ===============================
+# Temporary Files
+# ===============================
+
+*.tmp
+*.bak
+*.cache
