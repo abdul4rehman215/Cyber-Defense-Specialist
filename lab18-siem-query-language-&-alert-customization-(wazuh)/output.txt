@@ -1,0 +1,236 @@
+=== Wazuh Service Status (Initial) ===
+
+● wazuh-manager.service - Wazuh manager
+     Loaded: loaded (/lib/systemd/system/wazuh-manager.service; enabled)
+     Active: inactive (dead)
+
+Service not running.
+
+
+=== Starting Wazuh Services ===
+
+sudo systemctl start wazuh-manager
+sudo systemctl start wazuh-indexer
+sudo systemctl start wazuh-dashboard
+
+● wazuh-manager.service - Wazuh manager
+     Loaded: loaded (/lib/systemd/system/wazuh-manager.service; enabled)
+     Active: active (running) since Mon 2026-02-16 20:12:03 UTC
+     Main PID: 1452 (ossec-analysisd)
+
+
+=== Opening Dashboard ===
+
+[1] 1824
+Opening Wazuh Dashboard on http://localhost:5601
+Login: admin / admin
+
+
+=== Installing jq ===
+
+Reading package lists... Done
+Building dependency tree... Done
+The following NEW packages will be installed:
+  jq
+Setting up jq (1.6-1ubuntu0.20.04.1) ...
+
+
+=== Failed Login Query Execution ===
+
+{
+  "took": 12,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 8,
+      "relation": "eq"
+    },
+    "max_score": 1.234,
+    "hits": [
+      {
+        "_index": "wazuh-alerts-4.x-2026.02.16",
+        "_source": {
+          "rule": {
+            "level": 5,
+            "groups": ["authentication_failed"]
+          },
+          "data": {
+            "srcip": "192.168.1.100"
+          }
+        }
+      }
+    ]
+  }
+}
+
+Query working successfully.
+
+
+=== test_query.sh Output ===
+
+{
+  "took": 9,
+  "timed_out": false,
+  "hits": {
+    "total": {
+      "value": 8,
+      "relation": "eq"
+    }
+  }
+}
+
+
+=== Validate Brute Force Query ===
+
+Query validation successful for /tmp/brute_force_query.json
+Total hits: 12
+
+
+=== Validate File Access Query ===
+
+Query validation successful for /tmp/file_access_query.json
+Total hits: 3
+
+
+=== Validate Network Query ===
+
+Query validation successful for /tmp/network_anomaly_query.json
+Total hits: 5
+
+Query validation working correctly.
+
+
+=== Rule Validation ===
+
+Starting wazuh-logtest v4.6.0
+Reading rules file...
+Reading custom rules...
+Rule loading completed successfully.
+Rules validated successfully
+
+
+=== Wazuh Restart Status ===
+
+● wazuh-manager.service - Wazuh manager
+     Active: active (running)
+
+Custom rules successfully loaded.
+
+
+=== Monitoring Background Processes ===
+
+[1] 4321
+Monitoring custom alerts... (Press Ctrl+C to stop)
+Custom alerts will be logged to: /tmp/custom_alerts.log
+
+[2] 4332
+Starting automated alert processing...
+
+
+=== Generate Test Events ===
+
+Generating test authentication failure events...
+Generating test file modification events...
+Test events generated successfully
+
+
+=== Custom Alerts Log ===
+
+Mon Feb 16 20:31:12 UTC 2026: Rule: 100001 Level: 10 Description: Multiple authentication failures from same source IP srcip: 192.168.1.100
+Mon Feb 16 20:31:14 UTC 2026: Rule: 100003 Level: 12 Description: Failed root login attempt detected srcip: 192.168.1.100
+Mon Feb 16 20:31:16 UTC 2026: Rule: 101001 Level: 12 Description: Critical system file modified: /etc/passwd
+
+Custom rules triggered successfully.
+
+
+=== Processed Alerts Log ===
+
+Mon Feb 16 20:31:12 UTC 2026: Processed Rule 100001 - Multiple authentication failures from same source IP
+Mon Feb 16 20:31:14 UTC 2026: Processed Rule 100003 - Failed root login attempt detected
+Mon Feb 16 20:31:16 UTC 2026: Processed Rule 101001 - Critical system file modified: /etc/passwd
+
+
+=== Simulated Blocking Log ===
+
+iptables -A INPUT -s 192.168.1.100 -j DROP
+iptables -A INPUT -s 192.168.1.100 -j DROP
+
+
+=== Query Performance Test - Original ===
+
+Testing query performance for: /tmp/brute_force_query.json
+Iterations: 5
+Iteration 1: .128472903s
+Iteration 2: .132993221s
+Iteration 3: .119381004s
+Iteration 4: .124992112s
+Iteration 5: .121884559s
+Average execution time: .125s
+
+
+=== Query Performance Test - Optimized ===
+
+Testing query performance for: /tmp/optimized_brute_force_query.json
+Iterations: 5
+Iteration 1: .072331902s
+Iteration 2: .069994211s
+Iteration 3: .074112008s
+Iteration 4: .071551009s
+Iteration 5: .070994119s
+Average execution time: .071s
+
+Performance improved by ~43%.
+
+
+=== Lab Validation Script Output ===
+
+=== Lab 18 Validation Script ===
+
+1. Checking Wazuh services...
+   ✓ Wazuh Manager is running
+   ✓ Wazuh Indexer is running
+
+2. Validating custom rules...
+   ✓ Authentication rules created
+   ✓ Syscheck rules created
+
+3. Testing query execution...
+   ✓ Elasticsearch cluster is accessible
+
+4. Validating created scripts...
+   ✓ test_query.sh is executable
+   ✓ validate_query.sh is executable
+   ✓ generate_test_events.sh is executable
+   ✓ monitor_alerts.sh is executable
+
+=== Validation Complete ===
+
+
+=== Final Test Scenario Output ===
+
+=== Final Test Scenario for Lab 18 ===
+
+Scenario 1: Simulating brute force attack...
+   Brute force simulation complete
+
+Scenario 2: Simulating critical file access...
+   Critical file access simulation complete
+
+Scenario 3: Testing custom queries...
+   Brute force query returned 18 hits
+
+Scenario 4: Checking alert processing...
+   Found 7 recent alerts
+
+=== Test Scenario Complete ===
+
+=== Final Verification ===
+
+Rule: 100001 Level: 10 Description: Multiple authentication failures from same source IP srcip: 10.0.0.50
+Rule: 100003 Level: 12 Description: Failed root login attempt detected srcip: 10.0.0.50
