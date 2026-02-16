@@ -1,0 +1,16 @@
+{
+  "email": {
+    "smtp_server": "localhost",
+    "smtp_port": 587,
+    "recipients": ["admin@company.com", "security@company.com"]
+  },
+  "blocking": {
+    "use_iptables": false,
+    "block_duration": 3600,
+    "whitelist_ips": ["127.0.0.1", "192.168.1.1"]
+  },
+  "thresholds": {
+    "failed_login_count": 3,
+    "time_window_seconds": 300
+  }
+}
