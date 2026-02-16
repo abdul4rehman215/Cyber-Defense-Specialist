@@ -1,0 +1,17 @@
+{
+    "data_sources": {
+        "local_feeds": [
+            "data/malware_domains.txt",
+            "data/suspicious_ips.txt"
+        ],
+        "api_endpoints": {
+            "virustotal": "https://www.virustotal.com/api/v3/",
+            "abuseipdb": "https://api.abuseipdb.com/api/v2/"
+        }
+    },
+    "thresholds": {
+        "high_risk": 80,
+        "medium_risk": 60,
+        "low_risk": 40
+    }
+}
