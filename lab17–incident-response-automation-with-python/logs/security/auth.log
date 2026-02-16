@@ -1,0 +1,5 @@
+2024-01-15 10:30:00 server01 login: FAILED LOGIN FROM 192.168.1.200 FOR user1
+2024-01-15 10:30:05 server01 login: FAILED LOGIN FROM 192.168.1.200 FOR user1
+2024-01-15 10:30:10 server01 login: FAILED LOGIN FROM 192.168.1.200 FOR user1
+2024-01-15 10:30:15 server01 sudo: user2 : USER=root ; COMMAND=/bin/rm -rf /tmp/test
+2024-01-15 10:30:20 server01 login: ROOT LOGIN ON tty1
