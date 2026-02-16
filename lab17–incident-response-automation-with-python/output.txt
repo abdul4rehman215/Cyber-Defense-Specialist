@@ -1,0 +1,70 @@
+============================================================
+AUTOMATED INCIDENT RESPONSE SYSTEM
+============================================================
+
+[STEP 1] Collecting logs...
+[INFO] Starting log collection
+[INFO] Collected 3 log sources
+[INFO] Report saved to /home/toor/incident_response/reports/incidents/collection_report_20260216_191655.json
+
+[STEP 2] Analyzing logs...
+[INFO] Starting log analysis
+
+==================================================
+INCIDENT ANALYSIS SUMMARY
+==================================================
+Total Incidents: 11
+
+Incidents by Type:
+ - failed_login: 5
+ - privilege_escalation: 1
+ - sql_injection: 1
+ - xss_attempt: 1
+
+Incidents by Severity:
+ - medium: 6
+ - critical: 1
+ - high: 1
+
+Top Source IPs:
+ - 192.168.1.100: 3
+ - 192.168.1.200: 3
+ - 203.0.113.45: 1
+ - unknown: 4
+==================================================
+[INFO] Analysis report saved to /home/toor/incident_response/reports/incidents/analysis_report_20260216_191656.json
+
+[STEP 3] Responding to incidents...
+
+[SIMULATION] Blocking IP unknown
+
+=== ALERT EMAIL ===
+Incident Type: privilege_escalation
+Severity: critical
+Source IP: unknown
+Log: 2024-01-15 10:30:15 server01 sudo: user2 : USER=root ; COMMAND=/bin/rm -rf /tmp/test
+===================
+
+[INFO] Ticket created: INC-20260216191656-PRIVILEGE_ESCALATION
+[INFO] Logs backed up to /home/toor/incident_response/alerts/log_backup_20260216_191656
+
+[SIMULATION] Blocking IP unknown
+
+=== ALERT EMAIL ===
+Incident Type: sql_injection
+Severity: high
+Source IP: unknown
+Log: 2024-01-15 10:29:45 [ERROR] SQL injection attempt: SELECT * FROM users WHERE id='1 OR 1=1--'
+===================
+
+[INFO] Ticket created: INC-20260216191656-SQL_INJECTION
+
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+
+[INFO] Total response actions executed: 13
+
+[INFO] Incident response automation completed
