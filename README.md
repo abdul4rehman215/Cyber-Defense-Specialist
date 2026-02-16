@@ -118,14 +118,13 @@ Focus: Linux logging, packet analysis, detection engineering fundamentals.
 
 | Lab | Title | Focus Area |
 |-----|-------|------------|
-| 01 | [Linux Security & Log Foundations](lab01-soc-mission-workflow-fundamentals) | Log architecture & visibility |
-| 02 | [HTTP Traffic Analysis & Deconstruction](lab02-siem-tool-configuration-(wazuh)) | Packet inspection |
-| 03 | [Post-Exploitation Traffic Detection](lab03-analyzing-network-traffic-with-wireshark) | C2 & lateral movement detection |
-| 04 | [Linux Malware Detection via Logs](lab04-http-https-traffic-deconstruction) | Host-based anomaly detection |
-| 05 | [MITRE ATT&CK Mapping](lab05-detecting-post-exploitation-traffic) | Detection engineering |
-| 06 | [Anomaly Detection & Risk Classification](lab06-linux-event-logs-for-malware-detection) | Threat scoring |
-| 07 | [Automated Incident Mapping & Reporting](lab07-mitre-attack-mapping-for-incident-detection) | SOC reporting automation |
-
+| 01 | [SOC Mission & Workflow Fundamentals](lab01-soc-mission-workflow-fundamentals) | SOC architecture & SIEM foundation |
+| 02 | [SIEM Tool Configuration (Wazuh)](lab02-siem-tool-configuration) | SIEM deployment & log monitoring |
+| 03 | [Analyzing Network Traffic with Wireshark](lab03-analyzing-network-traffic-with-wireshark) | Packet capture & protocol analysis |
+| 04 | [HTTP/HTTPS Traffic Deconstruction](lab04-http-https-traffic-deconstruction) | Web traffic inspection & anomaly detection |
+| 05 | [Detecting Post-Exploitation Traffic](lab05-detecting-post-exploitation-traffic) | C2 detection & lateral movement analysis |
+| 06 | [Linux Event Logs for Malware Detection](lab06-linux-event-logs-for-malware-detection) | Host-based log analysis & anomaly detection |
+| 07 | [Automated MITRE Mapping for Incident & Reporting](lab07-mitre-attack-mapping-for-incident-detection) | Detection engineering & ATT&CK mapping |
 
 ### Skills Demonstrated
 - Linux security log analysis
@@ -146,16 +145,14 @@ Focus: Detection engineering, triage automation, playbooks, SOAR integration.
 
 | Lab | Title | Focus Area |
 |-----|-------|------------|
-| 08 | [Zero Trust Access Implementation](lab08-malware-identification-document-payloads) | Access control automation |
-| 09 | [MITRE Detection Engineering](lab09-email-header-analysis-for-threats) | Threat classification |
-| 10 | [lab10-identifying-malicious-attachments-&-urls](lab10-identifying-malicious-attachments-&-urls) | Email security automation |
-| 11 | [Incident Triage Automation](lab11-incident-triage-with-python-automation) | Alert prioritization |
-| 12 | [SOC Playbooks Development](lab12-soc-playbooks-development) | Automated response workflows |
-| 13 | [SOAR Tool Integration (Wazuh + TheHive + Cortex)](lab13-soar-tool-integration) | Workflow orchestration |
-
+| 08 | [Malware Identification in Document Payloads](lab08-malware-identification-in-document-payloads) | Document malware analysis |
+| 09 | [Email Header Analysis for Threats](lab09-email-header-analysis-for-threats) | Email authentication & spoofing detection |
+| 10 | [Identifying Malicious Attachments & URLs](lab10-identifying-malicious-attachments-&-urls) | Email security automation |
+| 11 | [Incident Triage with Python Automation](lab11-incident-triage-with-python-automation) | Alert prioritization & automation |
+| 12 | [SOC Playbooks Development](lab12-soc-playbooks-development) | Automated incident response workflows |
+| 13 | [SOAR Tool Integration (Wazuh + TheHive + Cortex)](lab13-soar-tool-integration) | Workflow orchestration & case automation |
 
 ### Skills Demonstrated
-- Zero Trust access validation
 - Email threat detection automation
 - Risk scoring & prioritization engines
 - Whitelist-based filtering
@@ -173,13 +170,14 @@ Focus: Enterprise monitoring, SIEM engineering, Zeek Behavioral scripting, full 
 
 | Lab | Title | Focus Area |
 |-----|-------|------------|
-| 14 | [Cryptography with Python](lab14-advanced-threat-intelligence-collection) | Data protection |
-| 15 | [Incident Response Simulation](lab15-system-hardening-with-bash-scripts) | IR lifecycle |
-| 16 | [Windows Hardening & AD Security](lab16-windows-hardening-&-active-directory-security) | Enterprise validation |
-| 17 | [Incident Response Automation](lab17–incident-response-automation-with-python) | Automated SOC engine |
-| 18 | [SIEM Query & Alert Customization (Wazuh)](lab18-siem-query-language-&-alert-customization-(wazuh)) | Detection tuning |
-| 19 | [Post-Exploitation Detection with Zeek](lab19–post-exploitation-detection-with-zeek) | Network detection engineering |
-| 20 | [Final SOC Simulation (Detect → Respond → Recover)](lab20–final-lab-detect-respond-and-recover) | End-to-end workflow |
+| 14 | [Advanced Threat Intelligence Collection](lab14-advanced-threat-intelligence-collection) | Threat intelligence automation |
+| 15 | [System Hardening with Bash Scripts](lab15-system-hardening-with-bash-scripts) | Linux hardening & firewall security |
+| 16 | [Windows Hardening & Active Directory Security](lab16-windows-hardening-and-active-directory-security) | Enterprise Windows security automation |
+| 17 | [Incident Response Automation with Python](lab17-incident-response-automation-with-python) | Automated SOC engine |
+| 18 | [SIEM Query Language & Alert Customization (Wazuh)](lab18-siem-query-language-and-alert-customization-wazuh) | Detection engineering & tuning |
+| 19 | [Post-Exploitation Detection with Zeek](lab19-post-exploitation-detection-with-zeek) | Network detection engineering |
+| 20 | [Final Lab – Detect, Respond, and Recover](lab20-final-lab-detect-respond-and-recover) | End-to-end SOC workflow |
+
 
 ### Skills Demonstrated
 - Custom Wazuh rule development
