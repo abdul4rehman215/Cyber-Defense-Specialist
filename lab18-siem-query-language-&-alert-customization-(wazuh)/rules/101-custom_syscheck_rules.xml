@@ -1,0 +1,17 @@
+<group name="custom,syscheck,">
+
+  <rule id="101001" level="12">
+    <if_matched_sid>550</if_matched_sid>
+    <field name="file">/etc/passwd|/etc/shadow|/etc/sudoers</field>
+    <description>Critical system file modified: $(file)</description>
+    <group>syscheck,critical_files,</group>
+  </rule>
+
+  <rule id="101002" level="10">
+    <if_matched_sid>550</if_matched_sid>
+    <field name="file">/tmp/|/var/tmp/</field>
+    <description>Suspicious execution in temporary directory: $(file)</description>
+    <group>syscheck,suspicious_execution,</group>
+  </rule>
+
+</group>
