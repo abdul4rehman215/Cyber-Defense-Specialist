@@ -1,0 +1,8 @@
+{
+    "timestamp": "20260216_191122",
+    "collected_files": {
+        "system": "/home/toor/incident_response/logs/system/syslog_20260216_191122.log",
+        "security": "/home/toor/incident_response/logs/security/auth_20260216_191122.log",
+        "webapp.log": "/home/toor/incident_response/logs/application/webapp_20260216_191122.log"
+    }
+}
