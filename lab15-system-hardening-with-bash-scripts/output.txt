@@ -1,0 +1,141 @@
+========================================
+ Linux System Hardening Script 
+========================================
+
+[2026-02-16 16:12:11] Updating system packages...
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Reading package lists... Done
+Building dependency tree... Done
+0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+[2026-02-16 16:12:18] System updated successfully.
+
+[2026-02-16 16:12:18] Configuring password policies...
+Setting up libpam-pwquality (1.4.5-1ubuntu2) ...
+[2026-02-16 16:12:22] Password policy configured.
+
+[2026-02-16 16:12:22] Disabling unnecessary services...
+[2026-02-16 16:12:22] Disabled avahi-daemon
+[2026-02-16 16:12:23] Disabled cups
+[2026-02-16 16:12:23] Disabled bluetooth
+
+[2026-02-16 16:12:23] Configuring kernel security parameters...
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.tcp_syncookies = 1
+net.ipv4.conf.all.log_martians = 1
+[2026-02-16 16:12:24] Kernel parameters configured.
+
+[2026-02-16 16:12:24] Securing critical file permissions...
+[2026-02-16 16:12:25] File permissions secured.
+
+[2026-02-16 16:12:25] System hardening completed successfully.
+
+------------------------------------------------------------
+
+[2026-02-16 16:18:11] Checking for empty passwords...
+[2026-02-16 16:18:11] Checking for duplicate UIDs...
+[2026-02-16 16:18:11] Configuring account lockout policy...
+Setting up libpam-modules (1.5.2-6ubuntu1) ...
+[2026-02-16 16:18:15] Setting password aging...
+[2026-02-16 16:18:15] Updated password aging for toor
+[2026-02-16 16:18:15] User security configuration completed.
+
+------------------------------------------------------------
+
+[2026-02-16 16:25:44] Installing and configuring UFW...
+Setting up ufw (0.36.2-6) ...
+
+[2026-02-16 16:25:48] Default firewall policies configured.
+[2026-02-16 16:25:48] Adding basic firewall rules...
+Rules updated
+Rules updated (v6)
+[2026-02-16 16:25:49] Basic rules added.
+
+[2026-02-16 16:25:49] Configuring rate limiting and blocking common attack ports...
+Rules updated
+[2026-02-16 16:25:50] Rate limiting and blocking rules configured.
+
+[2026-02-16 16:25:50] Enabling firewall...
+Firewall is active and enabled on system startup
+
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (forward)
+
+[2026-02-16 16:25:51] Firewall enabled successfully.
+[2026-02-16 16:25:51] Firewall configuration completed.
+
+------------------------------------------------------------
+
+Configuring SYN flood protection...
+Configuring port scan protection...
+Blocking invalid packets...
+Installing iptables-persistent and saving rules...
+Setting up iptables-persistent (1.0.20) ...
+Current iptables rules saved
+Advanced iptables configuration completed.
+
+------------------------------------------------------------
+
+SSH configuration backed up.
+Applying SSH security settings...
+SSH security parameters configured.
+Configuring SSH login banner...
+Testing SSH configuration...
+● ssh.service - OpenBSD Secure Shell server
+     Active: active (running)
+SSH hardening completed.
+
+------------------------------------------------------------
+
+Validating SSH Configuration...
+[PASS] PermitRootLogin is set to no
+[PASS] PasswordAuthentication is set to no
+[PASS] MaxAuthTries is set to 3
+[PASS] PermitEmptyPasswords is set to no
+[PASS] ClientAliveInterval is set to 300
+[PASS] ClientAliveCountMax is set to 2
+[PASS] Protocol is set to 2
+
+------------------------------------------------------------
+
+[2026-02-16 16:45:02] Searching for SUID files...
+[2026-02-16 16:45:03] Total SUID files found: 28
+[2026-02-16 16:45:03] Searching for world-writable files...
+[2026-02-16 16:45:04] Removed world-write permission from 3 files.
+[2026-02-16 16:45:04] Securing temporary directories...
+[2026-02-16 16:45:05] Temporary directories secured.
+[2026-02-16 16:45:05] Installing and initializing AIDE...
+Running aideinit...
+Database initialized.
+[2026-02-16 16:49:12] AIDE database initialized successfully.
+[2026-02-16 16:49:12] File system hardening completed.
+
+------------------------------------------------------------
+
+System Hardening Verification Report
+Generated on: Sun Feb 16 16:55:11 UTC 2026
+=====================================
+
+Verifying Password Policy...
+minlen = 12
+minclass = 3
+PASS_MAX_DAYS   90
+PASS_MIN_DAYS   7
+
+Verifying Firewall...
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing)
+
+Verifying SSH Configuration...
+PermitRootLogin no
+PasswordAuthentication no
+MaxAuthTries 3
+PermitEmptyPasswords no
+ClientAliveInterval 300
+ClientAliveCountMax 2
+Protocol 2
+active
+
+Verification Completed.
