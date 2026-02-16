@@ -1,3 +1,107 @@
+.
+├── alerts
+├── config
+├── logs
+│   ├── application
+│   ├── security
+│   └── system
+├── reports
+│   └── incidents
+└── scripts
+    ├── analysis
+    ├── collection
+    └── response
+
+toor@ip-172-31-10-252:~/incident_response$ wc -l logs/system/syslog.log
+5 logs/system/syslog.log
+
+toor@ip-172-31-10-252:~/incident_response$ wc -l logs/security/auth.log
+5 logs/security/auth.log
+
+toor@ip-172-31-10-252:~/incident_response$ wc -l logs/application/webapp.log
+5 logs/application/webapp.log
+
+toor@ip-172-31-10-252:~/incident_response$ python3 scripts/collection/log_collector.py
+[INFO] Starting log collection
+[INFO] Collected 3 log sources
+[INFO] Report saved to /home/toor/incident_response/reports/incidents/collection_report_20260216_191122.json
+
+toor@ip-172-31-10-252:~/incident_response$ python3 scripts/analysis/log_analyzer.py
+[INFO] Starting log analysis
+
+==================================================
+INCIDENT ANALYSIS SUMMARY
+==================================================
+Total Incidents: 11
+
+Incidents by Type:
+ - failed_login: 5
+ - privilege_escalation: 1
+ - sql_injection: 1
+ - xss_attempt: 1
+
+Incidents by Severity:
+ - medium: 6
+ - critical: 1
+ - high: 1
+
+Top Source IPs:
+ - 192.168.1.100: 3
+ - 192.168.1.200: 3
+ - 203.0.113.45: 1
+ - unknown: 4
+==================================================
+[INFO] Analysis report saved to /home/toor/incident_response/reports/incidents/analysis_report_20260216_191155.json
+________________________________________
+
+toor@ip-172-31-10-252:~/incident_response$ ls -lh reports/incidents/
+total 20K
+-rw-r--r-- 1 toor toor 3.1K Feb 16 19:11 collection_report_20260216_191122.json
+-rw-r--r-- 1 toor toor 9.8K Feb 16 19:11 analysis_report_20260216_191155.json
+
+
+toor@ip-172-31-10-252:~/incident_response$ python3 scripts/response/incident_responder.py
+[SIMULATION] Blocking IP unknown
+
+=== ALERT EMAIL ===
+Incident Type: privilege_escalation
+Severity: critical
+Source IP: unknown
+Log: 2024-01-15 10:30:15 server01 sudo: user2 : USER=root ; COMMAND=/bin/rm -rf /tmp/test
+===================
+
+[INFO] Ticket created: INC-20260216191203-PRIVILEGE_ESCALATION
+[INFO] Logs backed up to /home/toor/incident_response/alerts/log_backup_20260216_191203
+
+[SIMULATION] Blocking IP unknown
+
+=== ALERT EMAIL ===
+Incident Type: sql_injection
+Severity: high
+Source IP: unknown
+Log: 2024-01-15 10:29:45 [ERROR] SQL injection attempt: SELECT * FROM users WHERE id='1 OR 1=1--'
+===================
+
+[INFO] Ticket created: INC-20260216191204-SQL_INJECTION
+
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+[INFO] Notification sent for failed_login
+
+[INFO] Total response actions executed: 13
+________________________________________
+
+
+toor@ip-172-31-10-252:~/incident_response$ ls -lh alerts/
+total 24K
+-rw-r--r-- 1 toor toor 1.2K Feb 16 19:12 INC-20260216191203-PRIVILEGE_ESCALATION.json
+-rw-r--r-- 1 toor toor 1.1K Feb 16 19:12 INC-20260216191204-SQL_INJECTION.json
+-rw-r--r-- 1 toor toor 2.4K Feb 16 19:12 response_actions.log
+drwxr-xr-x 4 toor toor 4.0K Feb 16 19:12 log_backup_20260216_191203
+
+toor@ip-172-31-10-252:~/incident_response$ python3 scripts/automated_response.py
 ============================================================
 AUTOMATED INCIDENT RESPONSE SYSTEM
 ============================================================
@@ -68,3 +172,36 @@ Log: 2024-01-15 10:29:45 [ERROR] SQL injection attempt: SELECT * FROM users WHER
 [INFO] Total response actions executed: 13
 
 [INFO] Incident response automation completed
+
+
+toor@ip-172-31-10-252:~/incident_response$ ls -lh reports/incidents/
+total 44K
+-rw-r--r-- 1 toor toor 3.1K Feb 16 19:11 collection_report_20260216_191122.json
+-rw-r--r-- 1 toor toor 3.2K Feb 16 19:16 collection_report_20260216_191655.json
+-rw-r--r-- 1 toor toor 9.8K Feb 16 19:11 analysis_report_20260216_191155.json
+-rw-r--r-- 1 toor toor 9.9K Feb 16 19:16 analysis_report_20260216_191656.json
+Multiple timestamped reports verified.
+
+
+toor@ip-172-31-10-252:~/incident_response$ ls -lh alerts/
+total 40K
+-rw-r--r-- 1 toor toor 1.2K Feb 16 19:12 INC-20260216191203-PRIVILEGE_ESCALATION.json
+-rw-r--r-- 1 toor toor 1.1K Feb 16 19:12 INC-20260216191204-SQL_INJECTION.json
+-rw-r--r-- 1 toor toor 1.3K Feb 16 19:16 INC-20260216191656-PRIVILEGE_ESCALATION.json
+-rw-r--r-- 1 toor toor 1.2K Feb 16 19:16 INC-20260216191656-SQL_INJECTION.json
+-rw-r--r-- 1 toor toor 3.4K Feb 16 19:16 response_actions.log
+drwxr-xr-x 4 toor toor 4.0K Feb 16 19:12 log_backup_20260216_191203
+drwxr-xr-x 4 toor toor 4.0K Feb 16 19:16 log_backup_20260216_191656
+✔ Tickets created
+✔ Log backups created
+✔ Response log maintained
+________________________________________
+
+
+toor@ip-172-31-10-252:~/incident_response$ tail -n 10 alerts/response_actions.log
+{"timestamp": "2026-02-16T19:16:56.112391", "action": "block_ip", "details": "unknown"}
+{"timestamp": "2026-02-16T19:16:56.113201", "action": "send_alert", "details": "privilege_escalation"}
+{"timestamp": "2026-02-16T19:16:56.114882", "action": "create_ticket", "details": "INC-20260216191656-PRIVILEGE_ESCALATION"}
+{"timestamp": "2026-02-16T19:16:56.116012", "action": "backup_logs", "details": "/home/toor/incident_response/alerts/log_backup_20260216_191656"}
+{"timestamp": "2026-02-16T19:16:56.118421", "action": "send_notification", "details": "failed_login"}
+Audit trail verified.
