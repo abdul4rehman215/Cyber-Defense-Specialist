@@ -1,0 +1,110 @@
+toor@ip-172-31-10-241:~$ pwsh --version
+PowerShell 7.4.1
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ pwsh scripts/ad-security-automation.ps1
+
+[2026-02-16 18:12:11] [INFO] Starting AD Security Automation Script
+[2026-02-16 18:12:11] [INFO] Disabled Accounts: 1
+[2026-02-16 18:12:11] [INFO] Admin Accounts: 1
+[2026-02-16 18:12:11] [INFO] Service Accounts: 1
+[2026-02-16 18:12:11] [INFO] AD Security Automation completed successfully
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ cat logs/ad-security.log
+
+[2026-02-16 18:12:11] [INFO] Starting AD Security Automation Script
+[2026-02-16 18:12:11] [INFO] Disabled Accounts: 1
+[2026-02-16 18:12:11] [INFO] Admin Accounts: 1
+[2026-02-16 18:12:11] [INFO] Service Accounts: 1
+[2026-02-16 18:12:11] [INFO] AD Security Automation completed successfully
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ cat logs/security-summary.json
+
+{
+  "Domain": "company.local",
+  "PasswordPolicyCompliant": true,
+  "LockoutPolicyCompliant": true,
+  "UserAudit": {
+    "Disabled": 1,
+    "Admins": 1,
+    "ServiceAccounts": 1
+  },
+  "Recommendations": [
+    "Review and remove unnecessary disabled accounts."
+  ],
+  "GeneratedAt": "2026-02-16T18:12:11"
+}
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ pwsh scripts/registry-hardening.ps1
+
+[2026-02-16 18:20:42] [INFO] Starting Registry Security Hardening
+[2026-02-16 18:20:42] [INFO] Registry hardening completed successfully
+[2026-02-16 18:20:42] [INFO] Compliance Score: 100%
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ cat logs/registry-hardening.log
+
+[2026-02-16 18:20:42] [INFO] Starting Registry Security Hardening
+[2026-02-16 18:20:42] [INFO] Registry hardening completed successfully
+[2026-02-16 18:20:42] [INFO] Compliance Score: 100%
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ cat logs/registry-hardening-report.json
+
+{
+  "TotalChecks": 4,
+  "CompliantChecks": 4,
+  "CompliancePercent": 100.0,
+  "GeneratedAt": "2026-02-16T18:20:42"
+}
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ pwsh scripts/security-monitor.ps1
+
+Security monitoring completed successfully.
+Overall Security Score: 100%
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ pwsh scripts/generate-report.ps1
+
+Report generated: ./logs/security-report.html
+
+--------------------------------------------------
+
+toor@ip-172-31-10-241:~/ad-security-lab$ cat logs/security-report.html
+
+Windows Security Hardening Report
+Generated: 2026-02-16 18:25:18
+
+Overall Security Score: 100%
+
+Password Policy Compliant: True
+Lockout Policy Compliant: True
+Registry Compliance Percentage: 100%
+
+--------------------------------------------------
+
+Complete Validation Cycle:
+
+pwsh scripts/ad-security-automation.ps1
+[INFO] AD Security Automation completed successfully
+
+pwsh scripts/registry-hardening.ps1
+[INFO] Compliance Score: 100%
+
+pwsh scripts/security-monitor.ps1
+Overall Security Score: 100%
+
+pwsh scripts/generate-report.ps1
+Report generated: ./logs/security-report.html
