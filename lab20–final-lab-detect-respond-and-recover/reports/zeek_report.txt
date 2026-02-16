@@ -1,0 +1,4 @@
+ZEEK NETWORK ANALYSIS REPORT
+
+Port Scanners Detected: ['127.0.0.1']
+Large Transfers: 0
