@@ -1,0 +1,30 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "rule.groups.keyword": "authentication_failed"
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "now-10m"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "source_ips": {
+      "terms": {
+        "field": "data.srcip.keyword",
+        "size": 10,
+        "min_doc_count": 3
+      }
+    }
+  }
+}
