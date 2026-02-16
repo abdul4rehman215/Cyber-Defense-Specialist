@@ -1,0 +1,30 @@
+{
+  "registry_security_settings": {
+    "HKLM": {
+      "SYSTEM\\CurrentControlSet\\Control\\Lsa": {
+        "LimitBlankPasswordUse": {
+          "type": "DWORD",
+          "value": 1,
+          "description": "Limit blank password use"
+        },
+        "NoLMHash": {
+          "type": "DWORD",
+          "value": 1,
+          "description": "Do not store LAN Manager hash"
+        }
+      },
+      "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {
+        "EnableLUA": {
+          "type": "DWORD",
+          "value": 1,
+          "description": "Enable User Account Control"
+        },
+        "ConsentPromptBehaviorAdmin": {
+          "type": "DWORD",
+          "value": 2,
+          "description": "UAC prompt for admin consent"
+        }
+      }
+    }
+  }
+}
