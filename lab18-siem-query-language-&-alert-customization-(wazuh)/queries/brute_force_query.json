@@ -1,0 +1,35 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "rule.groups": "authentication_failed"
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "now-10m"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "source_ips": {
+      "terms": {
+        "field": "data.srcip.keyword",
+        "size": 10
+      },
+      "aggs": {
+        "failed_attempts": {
+          "value_count": {
+            "field": "rule.id"
+          }
+        }
+      }
+    }
+  }
+}
