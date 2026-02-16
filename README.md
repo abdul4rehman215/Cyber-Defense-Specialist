@@ -57,7 +57,7 @@
 </div>
 
 ---
-
+<!--
 <p align="center">
 <a href="#-section-1-security-foundations-labs-1-7">🔰 Foundations</a> •
 <a href="#-section-2-detection--soc-automation-labs-8-13">🚀 Automation</a> •
@@ -65,7 +65,7 @@
 <a href="#-technologies-used-across-repository">🧰 Tech Stack</a> •
 <a href="#-real-world-alignment">🏢 Alignment</a>
 </p>
-
+-->
 ---
 
 ## 📌 Project Overview
@@ -197,15 +197,15 @@ Focus: Enterprise monitoring, SIEM engineering, Zeek Behavioral scripting, full 
 
 <p align="center">
   <img src="https://img.shields.io/badge/🔍%20Detect-7B68EE?style=flat-square"/>
-  <img src="https://img.shields.io/badge/→-lightgrey?style=flat-square"/>
+  <img src="https://img.shields.io/badge/→-444444?style=flat-square"/>
   <img src="https://img.shields.io/badge/📊%20Analyze-B91C1C?style=flat-square"/>
-  <img src="https://img.shields.io/badge/→-lightgrey?style=flat-square"/>
+  <img src="https://img.shields.io/badge/→-444444?style=flat-square"/>
   <img src="https://img.shields.io/badge/⚡%20Respond-4338CA?style=flat-square"/>
-  <img src="https://img.shields.io/badge/→-lightgrey?style=flat-square"/>
+  <img src="https://img.shields.io/badge/→-444444?style=flat-square"/>
   <img src="https://img.shields.io/badge/🛠%20Recover-0969DA?style=flat-square"/>
-  <img src="https://img.shields.io/badge/→-lightgrey?style=flat-square"/>
+  <img src="https://img.shields.io/badge/→-444444?style=flat-square"/>
   <img src="https://img.shields.io/badge/📝%20Document-teal?style=flat-square"/>
-  <img src="https://img.shields.io/badge/→-lightgrey?style=flat-square"/>
+  <img src="https://img.shields.io/badge/→-444444?style=flat-square"/>
   <img src="https://img.shields.io/badge/☑️%20Verify-28a745?style=flat-square"/>
 </p>
 
