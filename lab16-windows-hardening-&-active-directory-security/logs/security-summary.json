@@ -1,0 +1,14 @@
+{
+  "Domain": "company.local",
+  "PasswordPolicyCompliant": true,
+  "LockoutPolicyCompliant": true,
+  "UserAudit": {
+    "Disabled": 1,
+    "Admins": 1,
+    "ServiceAccounts": 1
+  },
+  "Recommendations": [
+    "Review and remove unnecessary disabled accounts."
+  ],
+  "GeneratedAt": "2026-02-16T18:12:11"
+}
