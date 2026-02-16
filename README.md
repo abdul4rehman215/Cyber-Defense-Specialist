@@ -118,7 +118,7 @@ Focus: Linux logging, packet analysis, detection engineering fundamentals.
 
 | Lab | Title | Focus Area |
 |-----|-------|------------|
-| 01 | [Linux Security & Log Foundations](./lab01-linux-security-log-foundations/) | Log architecture & visibility |
+| 01 | [Linux Security & Log Foundations](lab01-soc-mission-workflow-fundamentals) | Log architecture & visibility |
 | 02 | [HTTP Traffic Analysis & Deconstruction](./lab02-http-traffic-analysis/) | Packet inspection |
 | 03 | [Post-Exploitation Traffic Detection](./lab03-post-exploitation-detection/) | C2 & lateral movement detection |
 | 04 | [Linux Malware Detection via Logs](./lab04-linux-malware-detection/) | Host-based anomaly detection |
