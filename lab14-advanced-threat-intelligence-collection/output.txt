@@ -1,0 +1,159 @@
+toor@ip-172-31-10-214:~$ mkdir -p ~/threat_intel/{scripts,data,reports,config,logs}
+
+toor@ip-172-31-10-214:~$ cd ~/threat_intel
+
+toor@ip-172-31-10-214:~/threat_intel$ python3 --version
+Python 3.12.3
+
+
+toor@ip-172-31-10-214:~/threat_intel$ python3 scripts/threat_collector.py
+Threat Intelligence Collector
+==================================================
+2026-02-16 14:42:11,183 - INFO - Starting threat collection process
+2026-02-16 14:42:11,197 - INFO - Collected data saved to data/collected_20260216_144211.json
+2026-02-16 14:42:11,197 - INFO - Collection completed: {'total_indicators': 7, 'output_file': 'data/collected_20260216_144211.json'}
+
+Collection Summary:
+Total Indicators: 7
+Output File: data/collected_20260216_144211.json
+
+
+toor@ip-172-31-10-214:~/threat_intel$ python3 scripts/data_normalizer.py
+Threat Intelligence Data Normalizer
+==================================================
+
+Normalization Summary:
+Total Indicators: 7
+Average Confidence: 50.0
+By Type: {'domain': 4, 'ip': 3}
+By Severity: {'MEDIUM': 4, 'LOW': 3}
+Output File: data/normalized_20260216_144315.json
+
+
+toor@ip-172-31-10-214:~/threat_intel$ ls -lh data/
+total 24K
+-rw-r--r-- 1 toor toor 3.6K Feb 16 14:42 collected_20260216_144211.json
+-rw-r--r-- 1 toor toor 4.2K Feb 16 14:43 normalized_20260216_144315.json
+-rw-r--r-- 1 toor toor  88B Feb 16 14:38 malware_domains.txt
+-rw-r--r-- 1 toor toor  46B Feb 16 14:39 suspicious_ips.txt
+
+
+toor@ip-172-31-10-214:~/threat_intel$ python3 scripts/report_generator.py
+Threat Intelligence Report Generator
+==================================================
+
+Reports Generated Successfully:
+Text Report: reports/threat_report_20260216_144421.txt
+HTML Report: reports/threat_report_20260216_144421.html
+JSON Report: reports/threat_report_20260216_144421.json
+
+
+toor@ip-172-31-10-214:~/threat_intel$ ls -lh reports/
+total 32K
+-rw-r--r-- 1 toor toor 2.1K Feb 16 14:44 threat_report_20260216_144421.txt
+-rw-r--r-- 1 toor toor 3.8K Feb 16 14:44 threat_report_20260216_144421.html
+-rw-r--r-- 1 toor toor 4.5K Feb 16 14:44 threat_report_20260216_144421.json
+
+
+toor@ip-172-31-10-214:~/threat_intel$ cat reports/threat_report_20260216_144421.txt
+EXECUTIVE SUMMARY
+-----------------
+Report Generated: 2026-02-16T14:44:21.482193
+
+Total Indicators: 7
+High Severity: 0
+Medium Severity: 7
+Low Severity: 0
+
+Top Indicator Types:
+ - domain: 4
+ - ip: 3
+
+SEVERITY BREAKDOWN
+------------------
+HIGH: 0 (0.00%)
+MEDIUM: 7 (100.00%)
+LOW: 0 (0.00%)
+INFO: 0 (0.00%)
+
+INDICATOR TYPE ANALYSIS
+-----------------------
+domain: 4 (57.14%)
+ip: 3 (42.86%)
+
+TOP THREATS
+-----------
+1. malicious-site.com (Type: domain, Risk: 70, Severity: MEDIUM, Confidence: 50)
+2. phishing-example.net (Type: domain, Risk: 70, Severity: MEDIUM, Confidence: 50)
+3. suspicious-domain.org (Type: domain, Risk: 70, Severity: MEDIUM, Confidence: 50)
+4. threat-actor.info (Type: domain, Risk: 70, Severity: MEDIUM, Confidence: 50)
+5. 192.168.1.100 (Type: ip, Risk: 60, Severity: MEDIUM, Confidence: 50)
+6. 203.0.113.10 (Type: ip, Risk: 60, Severity: MEDIUM, Confidence: 50)
+7. 198.51.100.20 (Type: ip, Risk: 60, Severity: MEDIUM, Confidence: 50)
+
+
+toor@ip-172-31-10-214:~/threat_intel$ ./scripts/run_pipeline.sh
+Starting Threat Intelligence Pipeline
+======================================
+[1/3] Collecting threat intelligence...
+Threat Intelligence Collector
+==================================================
+2026-02-16 15:02:11,113 - INFO - Starting threat collection process
+2026-02-16 15:02:11,129 - INFO - Collected data saved to data/collected_20260216_150211.json
+2026-02-16 15:02:11,129 - INFO - Collection completed: {'total_indicators': 7, 'output_file': 'data/collected_20260216_150211.json'}
+
+Collection Summary:
+Total Indicators: 7
+Output File: data/collected_20260216_150211.json
+
+[2/3] Normalizing data...
+Threat Intelligence Data Normalizer
+==================================================
+
+Normalization Summary:
+Total Indicators: 7
+Average Confidence: 50.0
+By Type: {'domain': 4, 'ip': 3}
+By Severity: {'MEDIUM': 7}
+Output File: data/normalized_20260216_150212.json
+
+[3/3] Generating reports...
+Threat Intelligence Report Generator
+==================================================
+
+Reports Generated Successfully:
+Text Report: reports/threat_report_20260216_150212.txt
+HTML Report: reports/threat_report_20260216_150212.html
+JSON Report: reports/threat_report_20260216_150212.json
+
+Pipeline completed successfully!
+Check reports/ directory for output
+
+
+toor@ip-172-31-10-214:~/threat_intel$ ls -lh data/
+total 40K
+-rw-r--r-- 1 toor toor 3.6K Feb 16 14:42 collected_20260216_144211.json
+-rw-r--r-- 1 toor toor 3.6K Feb 16 15:02 collected_20260216_150211.json
+-rw-r--r-- 1 toor toor 4.2K Feb 16 14:43 normalized_20260216_144315.json
+-rw-r--r-- 1 toor toor 4.3K Feb 16 15:02 normalized_20260216_150212.json
+-rw-r--r-- 1 toor toor  88B Feb 16 14:38 malware_domains.txt
+-rw-r--r-- 1 toor toor  46B Feb 16 14:39 suspicious_ips.txt
+
+
+toor@ip-172-31-10-214:~/threat_intel$ ls -lh reports/
+total 64K
+-rw-r--r-- 1 toor toor 2.1K Feb 16 14:44 threat_report_20260216_144421.txt
+-rw-r--r-- 1 toor toor 3.8K Feb 16 14:44 threat_report_20260216_144421.html
+-rw-r--r-- 1 toor toor 4.5K Feb 16 14:44 threat_report_20260216_144421.json
+-rw-r--r-- 1 toor toor 2.2K Feb 16 15:02 threat_report_20260216_150212.txt
+-rw-r--r-- 1 toor toor 3.9K Feb 16 15:02 threat_report_20260216_150212.html
+-rw-r--r-- 1 toor toor 4.6K Feb 16 15:02 threat_report_20260216_150212.json
+
+
+toor@ip-172-31-10-214:~/threat_intel$ python3 -m json.tool data/normalized_20260216_150212.json > /dev/null
+
+
+toor@ip-172-31-10-214:~/threat_intel$ tail -n 5 logs/collection.log
+2026-02-16 15:02:11,113 - INFO - Starting threat collection process
+2026-02-16 15:02:11,129 - INFO - Collected data saved to data/collected_20260216_150211.json
+2026-02-16 15:02:11,129 - INFO - Collection completed: {'total_indicators': 7, 'output_file': 'data/collected_20260216_150211.json'}
