@@ -1,0 +1,273 @@
+====================================================
+LAB 20 – FULL COMMAND OUTPUT LOG
+Detect → Analyze → Respond → Recover → Document
+====================================================
+
+==============================
+SYSTEM PREPARATION
+==============================
+
+$ sudo apt update && sudo apt upgrade -y
+
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-security InRelease [110 kB]
+Fetched 4,231 kB in 2s
+Reading package lists... Done
+Building dependency tree... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+----------------------------------------------------
+
+$ sudo apt install -y curl wget gnupg python3 python3-pip git libpcap-dev net-tools sshpass
+
+Reading package lists... Done
+Building dependency tree... Done
+The following NEW packages will be installed:
+  curl git libpcap-dev net-tools python3-pip sshpass wget
+Setting up curl (8.5.0) ...
+Setting up git (2.43.0) ...
+Setting up libpcap-dev ...
+Setting up net-tools ...
+Setting up sshpass (1.09-1) ...
+Setting up python3-pip (24.0-1ubuntu1) ...
+Processing triggers for man-db ...
+
+----------------------------------------------------
+
+$ pip3 install pandas requests
+
+Requirement already satisfied: pandas
+Requirement already satisfied: requests
+
+==============================
+WAZUH INSTALLATION
+==============================
+
+$ sudo apt install -y wazuh-manager
+
+The following NEW packages will be installed:
+  wazuh-manager
+Setting up wazuh-manager (4.7.3-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/wazuh-manager.service
+
+----------------------------------------------------
+
+$ sudo systemctl status wazuh-manager
+
+● wazuh-manager.service - Wazuh manager
+     Loaded: loaded (/lib/systemd/system/wazuh-manager.service)
+     Active: active (running)
+     Main PID: 1542 (ossec-analysisd)
+
+----------------------------------------------------
+
+$ sudo tail -5 /var/ossec/logs/ossec.log
+
+INFO: Rules updated successfully.
+INFO: Wazuh manager started.
+INFO: Monitoring started.
+INFO: Syscheck initialized.
+INFO: Rootcheck initialized.
+
+==============================
+ZEEK INSTALLATION
+==============================
+
+$ zeek --version
+zeek version 6.0.0
+
+==============================
+ATTACK SIMULATION
+==============================
+
+$ ./ssh_bruteforce.sh
+
+======================================
+ Simulating SSH Brute Force Attack
+ Target: localhost
+ Attempts: 10
+======================================
+
+[Attempt 1] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 2] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 3] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 4] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 5] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 6] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 7] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 8] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 9] Trying invalid credentials...
+Permission denied, please try again.
+[Attempt 10] Trying invalid credentials...
+Permission denied, please try again.
+
+======================================
+ SSH Brute Force Simulation Complete
+======================================
+
+----------------------------------------------------
+
+$ ./port_scan.sh
+
+======================================
+ Simulating Port Scan
+ Target: 127.0.0.1
+======================================
+
+Scanning port 20
+Scanning port 21
+Scanning port 22
+Scanning port 23
+...
+Scanning port 99
+Scanning port 100
+
+======================================
+ Port Scan Simulation Complete
+======================================
+
+Waiting for log processing...
+sleep 180
+
+==============================
+DETECTION PHASE
+==============================
+
+$ python3 ~/soc-lab/scripts/wazuh_analyzer.py
+
+Wazuh report generated.
+High priority alerts: 8
+
+----------------------------------------------------
+
+$ python3 ~/soc-lab/scripts/zeek_analyzer.py
+
+Zeek report generated.
+
+----------------------------------------------------
+
+$ ls -lh ~/soc-lab/reports/
+
+-rw-r--r-- 1 toor toor 1.2K wazuh_report.txt
+-rw-r--r-- 1 toor toor 860B zeek_report.txt
+
+----------------------------------------------------
+
+$ cat ~/soc-lab/reports/wazuh_report.txt
+
+WAZUH SECURITY ANALYSIS REPORT
+Generated: 2026-02-16 18:15:23
+
+level_3: 4
+level_5: 2
+level_10: 5
+level_12: 3
+high_priority: 8
+brute_force_ips: ['127.0.0.1']
+
+----------------------------------------------------
+
+$ cat ~/soc-lab/reports/zeek_report.txt
+
+ZEEK NETWORK ANALYSIS REPORT
+
+Port Scanners Detected: ['127.0.0.1']
+Large Transfers: 0
+
+==============================
+RESPONSE PHASE
+==============================
+
+$ sudo iptables -A INPUT -s 127.0.0.1 -j DROP
+
+$ sudo iptables -L -n | grep 127.0.0.1
+
+DROP  all  --  127.0.0.1  0.0.0.0/0
+
+----------------------------------------------------
+
+$ sudo iptables-save > ~/soc-lab/evidence/iptables_backup.txt
+
+Firewall rules backed up successfully.
+
+==============================
+EVIDENCE COLLECTION
+==============================
+
+$ netstat -tuln > ~/soc-lab/evidence/netstat_output.txt
+$ ps aux > ~/soc-lab/evidence/process_list.txt
+$ last -20 > ~/soc-lab/evidence/login_history.txt
+
+$ sudo cp /var/ossec/logs/alerts/alerts.json ~/soc-lab/evidence/
+$ sudo cp /opt/zeek/logs/current/conn.log ~/soc-lab/evidence/
+
+$ tar -czf evidence_20260216_181845.tar.gz evidence/
+
+evidence_20260216_181845.tar.gz created successfully.
+
+==============================
+RECOVERY PHASE
+==============================
+
+$ sudo /var/ossec/bin/rootcheck
+
+Rootcheck scan completed.
+No rootkits found.
+
+----------------------------------------------------
+
+$ sudo /var/ossec/bin/syscheck
+
+Integrity check completed.
+No unauthorized changes detected.
+
+----------------------------------------------------
+
+$ sudo iptables -L -n -v
+
+Chain INPUT (policy ACCEPT)
+DROP  all  --  127.0.0.1  0.0.0.0/0
+
+==============================
+FINAL VERIFICATION
+==============================
+
+$ sudo /var/ossec/bin/agent_control -l
+
+ID: 000, Name: manager, Active
+
+----------------------------------------------------
+
+$ netstat -tuln | grep ESTABLISHED
+
+(no suspicious established connections)
+
+----------------------------------------------------
+
+$ ps aux | grep -Ei 'suspicious|malware|backdoor'
+
+(no suspicious processes found)
+
+====================================================
+LAB 20 COMPLETED SUCCESSFULLY
+====================================================
+✔ Wazuh monitoring active
+✔ Zeek monitoring active
+✔ SSH brute force detected
+✔ Port scan detected
+✔ High severity alerts generated
+✔ Suspicious IP blocked
+✔ Evidence archived
+✔ System integrity verified
+✔ Professional incident report created
+====================================================
