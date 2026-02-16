@@ -1,49 +1,46 @@
-# 🧪 Lab 16 – Windows Hardening & Active Directory Security
+# 🧪 Lab 16 – Windows Hardening & Active Directory Security  
+(PowerShell Automation on Ubuntu 24.04)
 
 ---
 
-## 📌 Lab Summary
+## 📌 Overview
 
-This lab implements automated Windows security hardening using PowerShell Core (pwsh 7.4.1) on Ubuntu 24.04.
+This lab demonstrates automated Windows security hardening and Active Directory validation using PowerShell Core (pwsh 7.4.1) on Ubuntu 24.04.
 
-The lab simulates:
-- Active Directory security validation
-- Registry hardening checks
-- Compliance scoring
-- Continuous monitoring
-- Enterprise security reporting
+A simulated Active Directory and Windows Registry environment was used to implement enterprise-style security validation, compliance scoring, and reporting automation.
 
-All validation logic is configuration-driven using JSON files.
+The lab focuses on structured security validation driven by JSON configuration files.
 
 ---
 
 ## 🎯 Objectives
 
-- Validate AD password and lockout policies
-- Audit privileged and disabled accounts
+- Validate Active Directory password and lockout policies
+- Audit privileged, disabled, and service accounts
 - Perform registry security compliance checks
-- Calculate overall security posture score
+- Calculate overall enterprise security score
 - Generate JSON and HTML compliance reports
+- Create remediation templates for security findings
 
 ---
 
 ## 📌 Prerequisites
 
-- Basic understanding of Windows operating systems and Active Directory concepts
-- Familiarity with PowerShell scripting and command-line interfaces
-- Knowledge of security principles and Windows registry structure
+- Basic understanding of Windows OS and Active Directory
+- Familiarity with PowerShell scripting
+- Knowledge of Windows registry structure
 - Understanding of JSON configuration files
 
 ---
 
-## 🖥 Environment
+## 🖥 Lab Environment
 
 - Ubuntu 24.04 LTS
 - PowerShell Core 7.4.1
-- Simulated Active Directory
+- Simulated Active Directory environment
 - Simulated Windows Registry
-- User: toor
-- Host: ip-172-31-10-241
+- User: `toor`
+- Host: `ip-172-31-10-241`
 
 ---
 
@@ -69,7 +66,7 @@ ad-security-lab/
 
 ---
 
-## ▶ Execution Order
+## ▶ Execution Workflow
 
 ```bash
 pwsh scripts/ad-security-automation.ps1
@@ -80,20 +77,49 @@ pwsh scripts/generate-report.ps1
 
 ---
 
-## ✅ Expected Output
+## ✅ Expected Outcomes
 
-* AD security log
-* Registry compliance report
-* Security monitor summary
-* Enterprise HTML security report
-* Overall compliance score
+After successful execution, the lab produces:
+
+* Active Directory security validation
+* Registry compliance assessment
+* Automated compliance scoring
+* Continuous monitoring summary
+* Enterprise-style HTML security report
+* Remediation recommendations
+
+The `logs/` directory contains:
+
+* `ad-security.log`
+* `security-summary.json`
+* `registry-hardening.log`
+* `registry-hardening-report.json`
+* `security-monitor-summary.json`
+* `security-report.html`
 
 ---
 
-## 🏁 Result
+## 🧠 Skills Developed
 
-Windows security validation and compliance monitoring successfully automated using PowerShell Core with structured JSON configuration and reporting.
+* PowerShell security automation
+* Active Directory policy validation
+* Registry hardening simulation
+* Compliance percentage calculation
+* Enterprise security monitoring logic
+* Structured security reporting
 
+---
 
-Say **next**.
-```
+## 🏁 Conclusion
+
+This lab successfully implemented Windows security hardening automation using PowerShell Core on Ubuntu 24.04.
+
+Security controls validated include:
+
+* Active Directory password and lockout policies
+* Privileged account auditing
+* Critical registry security settings
+* Compliance scoring and monitoring
+* Automated enterprise reporting
+
+The automation framework built in this lab demonstrates scalable and structured security validation techniques that can be adapted to real-world Active Directory and Windows enterprise environments.
