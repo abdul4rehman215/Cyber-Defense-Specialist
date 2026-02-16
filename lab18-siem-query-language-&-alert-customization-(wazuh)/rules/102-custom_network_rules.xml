@@ -1,0 +1,17 @@
+<group name="custom,firewall,">
+
+  <rule id="102001" level="8">
+    <if_matched_sid>4001</if_matched_sid>
+    <same_source_ip />
+    <description>Potential port scan detected from $(srcip)</description>
+    <group>firewall,port_scan,</group>
+  </rule>
+
+  <rule id="102002" level="10">
+    <if_matched_sid>4003</if_matched_sid>
+    <same_source_ip />
+    <description>Multiple connection attempts blocked from $(srcip)</description>
+    <group>firewall,connection_flood,</group>
+  </rule>
+
+</group>
