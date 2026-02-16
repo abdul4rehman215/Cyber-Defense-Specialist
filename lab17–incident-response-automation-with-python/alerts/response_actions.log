@@ -2,3 +2,9 @@
 {"timestamp": "2026-02-16T19:12:03.112999", "action": "send_alert", "details": "privilege_escalation"}
 {"timestamp": "2026-02-16T19:12:03.114002", "action": "create_ticket", "details": "INC-20260216191203-PRIVILEGE_ESCALATION"}
 {"timestamp": "2026-02-16T19:12:03.115331", "action": "backup_logs", "details": "/home/toor/incident_resp
+
+{"timestamp": "2026-02-16T19:16:56.112391", "action": "block_ip", "details": "unknown"}
+{"timestamp": "2026-02-16T19:16:56.113201", "action": "send_alert", "details": "privilege_escalation"}
+{"timestamp": "2026-02-16T19:16:56.114882", "action": "create_ticket", "details": "INC-20260216191656-PRIVILEGE_ESCALATION"}
+{"timestamp": "2026-02-16T19:16:56.116012", "action": "backup_logs", "details": "/home/toor/incident_response/alerts/log_backup_20260216_191656"}
+{"timestamp": "2026-02-16T19:16:56.118421", "action": "send_notification", "details": "failed_login"}
