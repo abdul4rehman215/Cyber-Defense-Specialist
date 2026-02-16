@@ -1,0 +1,24 @@
+<group name="custom,authentication,">
+
+  <rule id="100001" level="10">
+    <if_matched_sid>5503</if_matched_sid>
+    <same_source_ip />
+    <description>Multiple authentication failures from same source IP</description>
+    <group>authentication_failures,brute_force,</group>
+  </rule>
+
+  <rule id="100002" level="8">
+    <if_matched_sid>5501</if_matched_sid>
+    <same_source_ip />
+    <description>Successful authentication after multiple failures</description>
+    <group>authentication_success,potential_compromise,</group>
+  </rule>
+
+  <rule id="100003" level="12">
+    <if_matched_sid>5503</if_matched_sid>
+    <user>root</user>
+    <description>Failed root login attempt detected</description>
+    <group>authentication_failures,root_access,</group>
+  </rule>
+
+</group>
