@@ -148,7 +148,7 @@ Focus: Detection engineering, triage automation, playbooks, SOAR integration.
 |-----|-------|------------|
 | 08 | [Zero Trust Access Implementation](./lab08-zero-trust-access/) | Access control automation |
 | 09 | [MITRE Detection Engineering](./lab09-mitre-detection-engineering/) | Threat classification |
-| 10 | [Malicious Attachments & URL Analysis](./lab10-email-threat-analysis/) | Email security automation |
+| 10 | [lab10-identifying-malicious-attachments-&-urls](./lab10-email-threat-analysis/) | Email security automation |
 | 11 | [Incident Triage Automation](./lab11-incident-triage-automation/) | Alert prioritization |
 | 12 | [SOC Playbooks Development](./lab12-soc-playbooks/) | Automated response workflows |
 | 13 | [SOAR Tool Integration (Wazuh + TheHive + Cortex)](./lab13-soar-integration/) | Workflow orchestration |
