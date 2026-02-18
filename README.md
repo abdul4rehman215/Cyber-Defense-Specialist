@@ -100,7 +100,7 @@ labXX-name/
 ├── README.md
 ├── commands.sh
 ├── automation scripts
-├── output samples
+├── output
 ├── reporting (JSON / HTML)
 ├── interview_qna.md
 └── troubleshooting.md
