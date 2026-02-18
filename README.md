@@ -218,11 +218,11 @@ This lab simulates a complete enterprise SOC operational workflow.
 
 ---
 
-# 🧰 Technologies Used Across Repository
+ # 🛠 Tools & Technologies Used Across Repository
 
-### Operating Systems
-- Ubuntu 22.04 / 24.04 LTS
-- Windows Security Concepts (simulated)
+<details>
+   
+<summary><b> Click to expand </b></summary>
 
 ### Monitoring & Detection
 - Wazuh
@@ -243,6 +243,8 @@ This lab simulates a complete enterprise SOC operational workflow.
 - PowerShell Core
 - Docker & Docker Compose
 - JSON / YAML configurations
+
+</details>
 
 ---
 
@@ -270,7 +272,7 @@ cd Cyber-Defense-Specialist
 cd labXX-name
 ````
 
-Follow each lab’s README for setup and execution steps.
+Each lab contains its own `README.md` with setup, execution steps, scripts, reports, and troubleshooting guidance.
 
 ---
 
@@ -286,3 +288,13 @@ Cyber Defense & SOC Engineering Portfolio
 Automation + Visibility + Response = Modern SOC.
 
 If this repository adds value, consider starring it ⭐
+
+  <a href="https://github.com/abdul4rehman215">
+    <img src="https://img.shields.io/badge/Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="Follow" />
+  </a>  
+  <a href="https://linkedin.com/in/abdul4rehman215">
+     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&v=1" />
+  </a>
+  <a href="mailto:abdul4rehman215@gmail.com">
+    <img src="https://img.shields.io/badge/Email-EE0000?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
