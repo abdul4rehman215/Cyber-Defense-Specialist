@@ -224,7 +224,7 @@ This lab simulates a complete enterprise SOC operational workflow.
    
 <summary><b> Click to expand </b></summary>
 
-### Monitoring & Detection
+### 🕵 Monitoring & Detection
 - Wazuh
 - TheHive
 - Cortex
@@ -237,7 +237,7 @@ This lab simulates a complete enterprise SOC operational workflow.
 - requests
 - MITRE ATT&CK
 
-### Automation & Scripting
+### ⚙ Automation & Scripting
 - Python 3.x
 - Bash
 - PowerShell Core
