@@ -1,6 +1,6 @@
 # 🛠️ Troubleshooting – Lab 03: Analyzing Network Traffic with Wireshark
 
-This document covers common issues encountered while installing, capturing, and analyzing network traffic using Wireshark and tshark on Linux systems.
+> This document covers common issues encountered while installing, capturing, and analyzing network traffic using Wireshark and tshark on Linux systems.
 
 ---
 
