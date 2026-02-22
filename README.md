@@ -508,6 +508,7 @@ Build. Detect. Automate. Defend. 🛡️
 # 👨‍💻 Author
 
 **Abdul Rehman**
+
 SOC Engineering • Detection Engineering • DFIR • Security Automation
 
 ### 📧 Reach Out
