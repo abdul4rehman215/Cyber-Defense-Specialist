@@ -96,7 +96,7 @@ The portfolio reflects practical SOC Tier 1 → Tier 2 → Detection Engineering
 
 ---
 
-## 📌 Project Overview
+## 📌 About This Repository
 
 A structured 20-lab SOC engineering program designed to simulate enterprise-grade security operations.
 
