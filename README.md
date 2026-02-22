@@ -111,6 +111,10 @@ All labs are executed in controlled Ubuntu lab environments using open-source se
 
 > 🔗 Click any lab to jump directly to its folder
 
+---
+
+## 🗂 Lab Categories Overview
+
 ## 🔰 Section 1: Security Foundations (Labs 1–7)
 
 <div align="left">
