@@ -148,8 +148,6 @@ All labs are executed in controlled Ubuntu lab environments using open-source se
 
 ## 🚀 Section 2: Detection & SOC Automation (Labs 8–13)
 
-Focus: Detection engineering, triage automation, playbooks, SOAR integration.
-
 <div align="left">
 
 ![Category](https://img.shields.io/badge/Category-SOC%20Automation-0A66C2?style=for-the-badge)
@@ -185,7 +183,6 @@ Focus: Detection engineering, triage automation, playbooks, SOAR integration.
 
 ## 🔐 Section 3: Advanced Security Automation (Labs 14–20)
 
-Focus: Enterprise monitoring, SIEM engineering, Zeek Behavioral scripting, full SOC lifecycle.
 <div align="left">
 
 ![Category](https://img.shields.io/badge/Category-Advanced%20Security-111111?style=for-the-badge)
@@ -382,6 +379,12 @@ This repository represents hands-on SOC engineering implementation built around 
 
 ## 📊 SOC Engineering Capability Matrix
 
+This capability matrix reflects hands-on implementation across 20 structured SOC labs, covering:
+
+Detection Engineering • SIEM Tuning • Network Security Monitoring • MITRE ATT&CK Mapping • SOAR Orchestration • Incident Response Automation • Threat Intelligence Integration • Security Hardening
+
+Exposure levels indicate applied engineering depth across host-based, network-based, and automation-driven SOC workflows — validated through structured reporting and real execution outputs.
+
 | Skill Area | Exposure Level | Practical Depth | Tools / Frameworks Used |
 |------------|---------------|----------------|--------------------------|
 | 🛡 Detection Engineering | ██████████ 100% | Custom rule creation, pattern detection, behavioral logic | Wazuh, Zeek, Python, Regex |
@@ -407,7 +410,7 @@ This repository represents hands-on SOC engineering implementation built around 
 - ███████░░░ = Foundational + Applied Integration
 
 
-This matrix reflects **SOC engineering depth**, not isolated scripting tasks — covering:
+This matrix reflects SOC engineering depth, not isolated scripting tasks — covering:
 
 > Detection → Correlation → Classification → Triage → Containment → Reporting → Validation
 
